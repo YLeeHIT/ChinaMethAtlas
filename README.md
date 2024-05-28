@@ -22,3 +22,7 @@ ChinaMethAtlas is a project focused on the analysis of DNA methylation data for 
 ```bash
 git clone https://github.com/YLeeHIT/ChinaMethAtlas.git
 cd ChinaMethAtlas
+
+## Citation
+
+If you use ChinaMethAtlas in your research, please cite the following paper: **A Comprehensive Tool for DNA Methylation Analysis in the Chinese population.**
