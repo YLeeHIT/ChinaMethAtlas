@@ -24,6 +24,30 @@ git clone https://github.com/YLeeHIT/ChinaMethAtlas.git
 cd ChinaMethAtlas
 ```
 
+### Usage Example
+1. Data Preprocessing:
+    ```bash
+    python scripts/data_preprocessing.py
+    ```
+
+2. Data Analysis:
+    ```bash
+    bash scripts/data_analysis.sh
+    ```
+
+3. Results Visulization:
+    ```bash
+    Rscript scripts/plot_results.R
+    ```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
 ## Citation
 
 If you use ChinaMethAtlas in your research, please cite the following paper: **A Comprehensive Tool for DNA Methylation Analysis in the Chinese population.**
+
+## Contact
+
+For any questions, please contact [email](yli21b@hit.edu.cn)
