@@ -4,7 +4,9 @@
 ChinaMethAtlas is a project focused on the analysis of DNA methylation data for the Chinese population. The project aims to provide tools and methods for the preprocessing, analysis, and visualization of methylation data. This repository contains scripts for data processing and visulization to facilitate methylation studies.
 
 ## Analysis Workflow
+### Methylation workflow
 ![Methylation Workflow](images/Meth_workflow.png)
+### SV workflow
 ![SV Workflow](images/SV_workflow.png)
 
 
