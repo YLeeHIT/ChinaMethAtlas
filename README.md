@@ -40,6 +40,9 @@ cd ChinaMethAtlas
     Rscript scripts/plot_results.R
     ```
 
+## Website
+Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR, on our interctive [ChinaMeth](http://bioinformatics.hit.edu.cn/methylation).
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
