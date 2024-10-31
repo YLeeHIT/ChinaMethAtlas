@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 
 # DMR Calculation and Filtering Script
 # This script calculates and filters DMRs and DMCs between two haplotypes (HP1 and HP2) using Metilene.
