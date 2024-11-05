@@ -6,12 +6,12 @@ ChinaMethAtlas is a project focused on the analysis of DNA methylation data for 
 ## Analysis Workflow
 ### Methylation workflow
 <div align="center">
-    <img src="images/Meth_workflow.png" alt="Methylation workflow" width="300"/>
+    <img src="images/Meth_workflow.png" alt="Methylation workflow" width="500"/>
 </div>
 
 ### SV workflow
 <div align="center">
-    <img src="images/SV_workflow.png" alt="SV worflow" width="300"/>
+    <img src="images/SV_workflow.png" alt="SV worflow" width="500"/>
 </div>
 
 ### DEL workflow
