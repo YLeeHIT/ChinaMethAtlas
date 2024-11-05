@@ -9,6 +9,8 @@ ChinaMethAtlas is a project focused on the analysis of DNA methylation data for 
 ### SV workflow
 ![SV Workflow](images/SV_workflow.png)
 
+#### DEL workflow
+![DEL pipeline](images/DEL_pipeline.png)
 The DEL analysis pipeline includes the following scripts:
 1. **sv_sampleFilter.sh**: Filters and standardizes SV data for individual samples. 
 2. **merge_pop.sh**: Merges SV data across populations, then filters and standardizes the merged data. 
