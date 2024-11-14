@@ -6,6 +6,10 @@
 ### A comprehensive DNA methylation atlas for the Chinese population through nanopore long-read sequencing of 106 individuals
 Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns of DNA methylation across diverse Chinese populations using advanced long-read sequencing technologies. This repository provides insights into our comprehensive study of methylation dynamics and their role in genetic regulation and environmental adaptation. It also includes scripts for data processing and visulization to facilitate methylation studies.
 
+<div align="center">
+    <img src="images/chinameth.png" alt="chinameth" width="500"/>
+</div>
+
 ## Key Features and Advantages
 - **Population-Specific Insights**: By examining distinct populations (e.g., northern, southern, and xizang groups), ChinaMeth provides a deeper understanding of the methylation landscape and the potential influence of regional adaptations.
 - **Advanced Technology**: Fully leveraging the advantages of long-read sequencing, ChinaMeth addresses limitations found in second-generation studies, providing high-resolution methylation data that uncovers patterns often overlooked by traditional methods.
