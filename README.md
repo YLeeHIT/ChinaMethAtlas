@@ -45,7 +45,7 @@ For users interested in the traditional Guppy + Nanopolish workflow, we provide 
 
 ### SV workflow
 <div align="center">
-    <img src="images/SV_workflow.png" alt="SV worflow" width="500"/>
+    <img src="images/SV_workflow.png" alt="SV worflow" width="400"/>
 </div>
 
 ### DEL workflow
