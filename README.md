@@ -50,7 +50,7 @@ For users interested in the traditional Guppy + Nanopolish workflow, we provide 
 
 ### DEL workflow
 <div align="center">
-    <img src="images/DEL_pipeline.png" alt="DEL Pipeline" width="300"/>
+    <img src="images/DEL_pipeline.png" alt="DEL Pipeline" width="150"/>
 </div>
 
 The DEL analysis pipeline includes the following scripts:
