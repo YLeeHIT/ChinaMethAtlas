@@ -7,7 +7,7 @@
 Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns of DNA methylation across diverse Chinese populations using advanced long-read sequencing technologies. This repository provides insights into our comprehensive study of methylation dynamics and their role in genetic regulation and environmental adaptation. It also includes scripts for data processing and visulization to facilitate methylation studies.
 
 <div align="center">
-    <img src="images/chinameth.png" alt="chinameth" width="500"/>
+    <img src="images/chinameth.png" alt="chinameth" width="900"/>
 </div>
 
 ## Key Features and Advantages
@@ -54,7 +54,7 @@ For users interested in the traditional Guppy + Nanopolish workflow, we provide 
 
 ### DEL workflow
 <div align="center">
-    <img src="images/DEL_pipeline.png" alt="DEL Pipeline" width="150"/>
+    <img src="images/del_pipeline.png" alt="DEL Pipeline" width="600"/>
 </div>
 
 The DEL analysis pipeline includes the following scripts:
