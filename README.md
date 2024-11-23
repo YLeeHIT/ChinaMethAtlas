@@ -52,6 +52,13 @@ For users interested in the traditional Guppy + Nanopolish workflow, we provide 
     <img src="images/SV_workflow.png" alt="SV worflow" width="400"/>
 </div>
 
+**SV Workflow** is a comprehensive workflow designed for analyzing methylation patterns in structural variants (SVs). The workflow consists of the following three main steps:
+1. **SV Data Preprocessing**: Integrate individual data into a population-level dataset and perform data filtering and quality control. This step ensures data integrity and reliability for downstream analysis.
+2. **SV Methylation Level Analysis**: Perform detailed analysis of methylation patterns in SV regions, with a focus on:
+- **DEL Workflow**: Analyze methylation patterns in deletion (DEL) regions to explore their distribution and potential functional roles within the genome.
+- **INS Workflow**: Investigate methylation patterns in insertion (INS) regions to uncover changes in methylation levels during the insertion process.
+3. **Identifying Transpoable Elements**:Examine changes in methylation patterns of insertion (INS) regions as transposable elements (TEs). Using the **MEG Workflow**, this step explores the mechanisms behind methylation dynamics in TEs and their impact on genome stability.
+
 ### DEL workflow
 <div align="center">
     <img src="images/del_pipeline.png" alt="DEL Pipeline" width="600"/>
