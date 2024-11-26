@@ -71,6 +71,18 @@ The DEL analysis pipeline includes the following scripts:
 3. **DEL_pop.sh**: Calculates sDMR (significant Differentially Methylated Region) methylation levels for DELs within populations. 
 4. **DEL_plot.R**: Generates scatter and density plots for DEL methylation levels.
 
+### INS workflow
+<div align="center">
+    <img src="images/ins_pipeline.png" alt="INS Pipeline" width="600"/>
+</div>
+
+The INS analysis pipeline includes the following scripts:
+
+1. **extractReadFromINS.py**: Extracts methylation signals and sequences around INS (Insertion) variants. 
+2. **compareSide2kbINS.sh**: Compares methylation levels between INS regions and their upstream/downstream 2kb regions. 
+3. **ins_pop_merge.sh**: Merges individual methylation data files into a population-level file. 
+4. **INS_plot.R**: Generates scatter and density plots for INS methylation levels.
+
 ## Feature
 - Data preprocessing scripts
 - Data analysis methods
