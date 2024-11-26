@@ -79,7 +79,7 @@ The DEL analysis pipeline includes the following scripts:
 
 ### INS workflow
 <div align="center">
-    <img src="images/ins_pipeline.png" alt="INS Pipeline" width="600"/>
+    <img src="images/ins_pipeline.png" alt="INS Pipeline" width="700"/>
 </div>
 
 The INS analysis pipeline includes the following scripts:
