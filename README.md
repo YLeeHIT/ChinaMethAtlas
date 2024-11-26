@@ -1,4 +1,10 @@
 # ChinaMeth: Comprehensive DNA Methylation Analysis for Diverse Population
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Language](https://img.shields.io/badge/language-R-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-linux%20|%20macOS-brightgreen)
+
 <div align="center">
     <img src="images/ChinaMeth.png" alt="ChinaMeth" width="300"/>
 </div>
