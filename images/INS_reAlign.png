@@ -1,0 +1,150 @@
+"""
+Script to compute methylation levels on consensus sequences
+Description:
+This script processes `.fm` and `.fa` files (generated from abpoa) to calculate 
+the methylation levels on consensus sequences at INS (Insertion) positions.
+
+Dependencies:
+- pandas
+- subprocess
+- os
+- collections.defaultdict
+
+Usage:
+python script_name.py <fm_file> <fa_file>
+"""
+
+import pandas as pd
+import os
+import subprocess
+from collections import defaultdict
+
+# Global thresholds for filtering methylation data
+minDepth = 3  # Minimum depth of methylation calls at a site
+minCG = 5     # Minimum number of CG sites required for an INS to be considered
+
+
+def average_meth(positions_values):
+    """
+    Calculate the average methylation levels for positions with sufficient depth.
+
+    Args:
+        positions_values (list of tuples): A list containing tuples of positions and values.
+
+    Returns:
+        list of tuples: Each tuple contains the position, average methylation level, and count.
+    """
+    result = []
+    position_dict = defaultdict(list)
+
+    for pos, value in positions_values:
+        position_dict[pos].append(value)
+
+    for pos in sorted(position_dict.keys()):
+        values = position_dict[pos]
+        if len(values) >= minDepth:  # Only consider positions with sufficient depth
+            avg_value = sum(values) / len(values)
+            result.append((pos, avg_value, len(values)))
+
+    return result
+
+
+def average_sites(position_values):
+    """
+    Compute the overall average methylation level across multiple sites.
+
+    Args:
+        position_values (list of tuples): A list containing position, average methylation, and count.
+
+    Returns:
+        float: The overall average methylation level.
+    """
+    total_meth = sum(value for _, value, _ in position_values)
+    count = len(position_values)
+    return total_meth / count if count > 0 else 0
+
+
+def sum_result(input_file, output_file):
+    """
+    Append the contents of one file to another.
+
+    Args:
+        input_file (str): Path to the input file.
+        output_file (str): Path to the output file.
+    """
+    cmd = f"cat {input_file} >> {output_file}"
+    try:
+        subprocess.run(cmd, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        print(f"Summary results appended to {output_file}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error while running summary: {e.stderr.decode()}")
+
+
+def ins_step_two(fm, fa):
+    """
+    Main function to calculate methylation levels for INS consensus sequences.
+
+    Args:
+        fm (str): Path to the `.fm` file containing methylation information.
+        fa (str): Path to the `.fa` file containing the consensus sequence.
+    """
+    if os.path.getsize(fm) and os.path.getsize(fa):
+        # Load data from files
+        fm_file = pd.read_csv(fm, header=None, sep='\t')
+        fa_file = pd.read_csv(fa, header=None, sep='\t')
+
+        pos_meth = []
+
+        for i in range(len(fa_file) // 2):
+            fa_read_name = fa_file.iloc[2 * i, 0]
+            fa_read = fa_file.iloc[2 * i + 1, 0]
+            fm_read_name = fm_file.iloc[4 * i, 0]
+            fm_read = fm_file.iloc[4 * i + 1, 0]
+            fm_meth = fm_file.iloc[4 * i + 3, 0]
+
+            if fa_read_name == fm_read_name:
+                fa_index = 0
+                fm_index = 0
+                for j in range(len(fa_read)):
+                    if fa_read[j] != "-":
+                        if fm_index + 1 < len(fm_meth) and fm_read[fm_index:fm_index + 2] == "CG":
+                            pos_cg = fa_index + 1  # 1-based position
+                            meth_cg = int(fm_meth[fm_index])
+                            pos_meth.append((pos_cg, meth_cg))
+                        fm_index += 1
+                    fa_index += 1
+
+        # Calculate methylation results
+        meth_result = average_meth(pos_meth)
+
+        # Extract metadata from filenames
+        file_name_parts = os.path.basename(fm).replace(".fm", "").split("_")
+        sample_name = file_name_parts[0]
+        chromosome = file_name_parts[1]
+        position = int(file_name_parts[2])
+        meth_level = average_sites(meth_result)
+
+        # Write methylation results for each INS
+        meth_dir = os.path.join(os.path.dirname(fm), "meth")
+        os.makedirs(meth_dir, exist_ok=True)
+        meth_file = os.path.join(meth_dir, os.path.basename(fm).replace(".fm", ".ins"))
+        print(f"Writing detailed methylation results to {meth_file}")
+        with open(meth_file, "w") as f:
+            for pos, value, count in meth_result:
+                f.write(f"{pos}\t{value:.4f}\t{count}\n")
+
+        # Write summary methylation results
+        result_dir = os.path.join(os.path.dirname(fm), "result")
+        os.makedirs(result_dir, exist_ok=True)
+        result_file = os.path.join(result_dir, f"{sample_name}.ins")
+        print(f"Writing summary results to {result_file}")
+        with open(result_file, "w") as f:
+            if len(meth_result) >= minCG:
+                f.write(f"{chromosome}\t{position}\t{position + 1}\t{meth_level:.4f}\t{sample_name}\n")
+
+        # Append to cumulative result file
+        summary_dir = os.path.dirname(os.path.dirname(fm))
+        summary_file = os.path.join(summary_dir, f"{sample_name}.meth")
+        sum_result(result_file, summary_file)
+    else:
+        print(f"Input file {fm} or {fa} is empty.")

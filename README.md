@@ -2,6 +2,8 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Language](https://img.shields.io/badge/language-R-blue)
+![Language](https://img.shields.io/badge/language-shell-4EAA25)
+![Language](https://img.shields.io/badge/language-python-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-linux%20|%20macOS-brightgreen)
 
@@ -89,10 +91,25 @@ The INS analysis pipeline includes the following scripts:
 3. **ins_pop_merge.sh**: Merges individual methylation data files into a population-level file. 
 4. **INS_plot.R**: Generates scatter and density plots for INS methylation levels.
 
+### ME workflow
+<div align="center">
+    <img src="images/INS_reAlign.png" alt="INS reAlign" width="500"/>
+</div>
+
+1. **run_reINS.sh**: Find the source location of the consensus sequence 
+- **reAlignStepOne.py**:
+- **reAlignStepTwo.sh**:
+2. **run_reINSPop.sh**: Integrate the results into a group format
+- **pop_reAlign.py**:
+- **annoINSSource.sh**:
+3. **main_fa.sh**: 
+- **pop_reAlign.py**:
+- **Integrate_fa.sh**:
+
 ## Feature
 - Data preprocessing scripts
 - Data analysis methods
-- Visulization tools for results
+- Visulization web for results
 
 ## Directory Structure
 - `data/`: Contains raw and processed data files
