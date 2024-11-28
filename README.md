@@ -93,18 +93,12 @@ The INS analysis pipeline includes the following scripts:
 
 ### ME workflow
 <div align="center">
-    <img src="images/INS_reAlign.png" alt="INS reAlign" width="500"/>
+    <img src="images/INS_reAlign2.png" alt="INS reAlign" width="500"/>
 </div>
 
-1. **run_reINS.sh**: Find the source location of the consensus sequence 
-- **reAlignStepOne.py**:
-- **reAlignStepTwo.sh**:
-2. **run_reINSPop.sh**: Integrate the results into a group format
-- **pop_reAlign.py**:
-- **annoINSSource.sh**:
-3. **main_fa.sh**: 
-- **pop_reAlign.py**:
-- **Integrate_fa.sh**:
+1. **reAlign.py**: Identify the source location of INS (insertion) consensus sequences.
+2. **pop_reAlign.py**: Integrate the results into a group format.
+3. **extract_fa.sh**: Annotate the INS with source into MEGs.
 
 ## Feature
 - Data preprocessing scripts
@@ -113,8 +107,11 @@ The INS analysis pipeline includes the following scripts:
 
 ## Directory Structure
 - `data/`: Contains raw and processed data files
-    - `DEL/`: Scripts specific to DEL analysis, including sample filtering, population merging, methylation level calculation, and plotting.
 - `scripts/`: Contains scripts for data processing and analysis
+    - `DEL/`: Scripts specific to DEL analysis, including sample filtering, population merging, methylation level calculation, and plotting.
+    - `INS/`: Scripts specific to INS analysis, including population merging, methylation level calculation, and plotting.
+    - `MEG/`: Scripts specific to locate the source of INS and annotate the consensus sequence.    
+    - `Others/`: Other statistical analysis scripts.    
 - `plots/`: Contains generated plots and visualizations
 - `docs/`: Documentation and Usage instructions
 
