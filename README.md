@@ -126,3 +126,6 @@ If you use ChinaMethAtlas in your research, please cite the following paper: **A
 
 ## Contact
 For any questions, please contact [email](yli21b@hit.edu.cn)
+
+## Release
+v1.0.1
