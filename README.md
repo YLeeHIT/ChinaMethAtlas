@@ -26,7 +26,7 @@ Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns 
 ## Novel Findings
 
 <div align="center">
-    <img src="images/breakthrough.jpg" alt="breakthrough" width="300"/>
+    <img src="images/breakthrough.jpg" alt="breakthrough" width="900"/>
 </div>
 
 **ChinaMeth** has revealed several novel insights into population-scale DNA methylation patterns:
