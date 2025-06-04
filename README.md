@@ -107,10 +107,42 @@ The INS analysis pipeline includes the following scripts:
 2. **pop_reAlign.py**: Integrate the results into a group format.
 3. **extract_fa.sh**: Annotate the INS with source into MEGs.
 
-## Example
-- Data preprocessing scripts
-- Data analysis methods
-- Visulization web for results
+## Demo & Usage Examples
+
+Each folder in the `scripts/` directory corresponds to a specific pipeline or analysis module. We provide usage demos with input data, expected output, and step-by-step instructions.
+
+### Folder Overview
+
+| Folder | Description | Example Available |
+|--------|-------------|-------------------|
+| `DEL/` | Pipeline for deletion (DEL) events | ✅ |
+| `INS/` | Pipeline for insertion (INS) events | ✅ |
+| `MEG/` | Methylation estimation and general QC | ✅ |
+| `ONT/` | ONT-specific raw data processing | ✅ |
+| `Others/` | Miscellaneous scripts and utilities | ✅ |
+
+---
+
+###  Example: `INS/` - Insertion Pipeline
+
+**1. Input files:**
+
+Demo/for_INS/input.bed
+Demo/for_INS/config.yaml
+
+**2. Run:**
+```bash
+bash run_INS_pipeline.sh example_data/INS/config.yaml
+```
+
+**3. Expected output:**
+
+Demo/for_INS/INS_results_summary.tsv
+Demo/for_INS/INS_methylation_matrix.tsv
+
+**4. Description:**
+
+This pipeline identifies methylation signatures around insertion events and summarizes them by sample and region.
 
 ## Directory Structure
 - `data/`: Contains raw and processed data files
