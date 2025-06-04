@@ -24,10 +24,17 @@ Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns 
 - **Interactive Data Exploration**: ChinaMeth provides an online, interactive data visualization platform to facilitate research on methylation patterns across populations. This open-access resource allows researchers to explore and analyze methylation data seamlessly, supporting diverse epigenetic studies
 
 ## Novel Findings
-ChinaMeth has unveiled several unique findings, such as:
-- Elevated methylation levels in specific structural variations, with significant implications for regional adaptation.
-- Identification of unique haplotype-based methylation patterns, especially among genes related to environmental resilience.
-- Insights into hypo-methylation patterns distinctive to certain populations, suggesting underlying epigenetic regulation mechanisms influenced by local environments.
+
+**ChinaMeth** has revealed several novel insights into population-scale DNA methylation patterns:
+
+- **Epigenetic features of structural variations**
+ChinaMeth uncovered distinct methylation signatures associated with structural variants. For instance, **insertion (INS) elements** exhibit significantly lower methylation levels compared to their surrounding genomic regions. When the origin of an inserted mobile element can be traced, its methylation level is often markedly reduced during translocation, suggesting **demethylation events during the insertion process**. Additionally, **non-deleted haplotypes** tend to show elevated methylation levels—**up to twofold**—compared to flanking regions, possibly reflecting an **epigenetic compensation** for the loss caused by deletion events.
+
+- **Haplotype-resolved methylation patterns**
+Unique haplotype-based methylation signatures were identified, particularly enriched among genes involved in **environmental adaptation and stress response**.
+
+- **Altitude-associated methylation changes**
+A quantitative relationship was established between **altitude and DNA methylation levels**, leading to the identification of a set of **altitude-responsive genes**. Notably, epigenetic regulation was observed in key genes such as *PRDM16*, *EPHB2*, and *WNT7A*, which are known to play roles in **hypoxia response and vascular remodeling**.
 
 ## Benefits for Future Researchers
 - **Comprehensive ONT Analysis Pipeline**: ChinaMeth offers a complete ONT analysis workflow, including essential scripts for key processing steps, streamlining data analysis for new users and experienced researchers alike.
@@ -100,7 +107,7 @@ The INS analysis pipeline includes the following scripts:
 2. **pop_reAlign.py**: Integrate the results into a group format.
 3. **extract_fa.sh**: Annotate the INS with source into MEGs.
 
-## Feature
+## Example
 - Data preprocessing scripts
 - Data analysis methods
 - Visulization web for results
@@ -122,10 +129,8 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Citation
-If you use ChinaMethAtlas in your research, please cite the following paper: **A Comprehensive Tool for DNA Methylation Analysis in the Chinese population.**
+If you use ChinaMethAtlas in your research, please cite the following paper: **A comprehensive DNA methylation atlas for the Chinese population through nanopore long-read sequencing of 106 individuals**
 
 ## Contact
 For any questions, please contact [email](yli21b@hit.edu.cn)
 
-## Release
-v1.0.1
