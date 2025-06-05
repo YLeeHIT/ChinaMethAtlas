@@ -12,11 +12,13 @@
 </div>
 
 ### A comprehensive DNA methylation atlas for the Chinese population through nanopore long-read sequencing of 106 individuals
-Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns of DNA methylation across diverse Chinese populations using nanopore sequencing technologies. This repository provides insights into our comprehensive study of methylation dynamics and their role in genetic regulation and environmental adaptation. It also includes scripts for data processing and visulization to facilitate methylation studies.
 
 <div align="center">
     <img src="images/chinameth.png" alt="chinameth" width="900"/>
 </div>
+
+Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns of DNA methylation across diverse Chinese populations using nanopore sequencing technologies. This repository provides insights into our comprehensive study of methylation dynamics and their role in genetic regulation and environmental adaptation. It also includes scripts for data processing and visulization to facilitate methylation studies.
+
 
 ## Technological advances
 
