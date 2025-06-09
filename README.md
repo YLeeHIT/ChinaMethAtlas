@@ -6,7 +6,6 @@
 ![Language](https://img.shields.io/badge/language-python-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-linux%20|%20macOS-brightgreen)
-![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FYLeeHIT%2FChinaMethAtlas&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23ffffff&title=visits&edge_flat=false)
 
 <div align="left">
     <img src="images/ChinaMeth.png" alt="ChinaMeth" width="300"/>
