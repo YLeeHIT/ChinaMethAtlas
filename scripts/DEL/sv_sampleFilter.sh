@@ -8,7 +8,7 @@
 inID=$1                                                                 # Sample ID as input parameter
 inSample="${inID}.cuteSV_force_calling.genotype.vcf.gz"                 # Input sample VCF file
 outFilter="${inID}.Filter.vcf.gz"                                       # Output file after filtering
-outStandard="${inID}.Filter.Stand.vcf.gz"                               # Final standardized VCF output file
+outStandard="${inID}.Filter.Stand.vcf"                               # Final standardized VCF output file
 threads=4
 
 # Step 1: Filter VCF File
@@ -41,7 +41,7 @@ cat <(bcftools view -h "${inSample}") <(bcftools view -H "${inSample}" |
 echo "Standardizing ${inID}"
 echo -e "NULL\t${inID}" > "${inID}.name"
 bcftools reheader -s "${inID}.name" -o "tmp.${outStandard}" "${outFilter}"
-bcftools annotate -x ^INFO/SVTYPE,^INFO/SVLEN,^INFO/END,^FORMAT/GT,^FORMAT/DR,^FORMAT/DV "tmp.${outStandard}" -o "${outStandard}" --threads ${threads}
+bcftools annotate -x ^INFO/SVTYPE,^INFO/SVLEN,^INFO/END,^FORMAT/GT,^FORMAT/DR,^FORMAT/DV "tmp.${outStandard}" -Ov -o "${outStandard}" --threads ${threads}
 
 # Cleanup temporary files
 rm "tmp.${outStandard}" "${inID}.name"

@@ -152,7 +152,7 @@ This pipeline identifies methylation signatures around DEL events and summarizes
 | Step | Script Path | Command | Description | Input | Output |
 |------|-------------|---------|-------------|--------|--------|
 | 1 | `scripts/DEL/sv_sampleFilter.sh` | `bash ../../scripts/DEL/sv_sampleFilter.sh sam1` | Filter and standardize individual VCF file | `sam1.vcf.gz` | `sam1.Filter.Stand.vcf.gz` |
-| 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop1_filtered_DEL.vcf` |
+| 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt 2` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop1_filtered_DEL.vcf` |
 | 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh invcf.vcf.gz` | Extract heterozygous deletions (DELs) from population VCF | `invcf.vcf.gz` | `pop.cpg` |
 
 **4. Expected output:**

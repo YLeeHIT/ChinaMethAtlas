@@ -11,11 +11,13 @@
 # Requirements: jasmine, bcftools, vcftools
 
 # Constants
-input_list="inlist.txt"            # Input list of VCF files
+input_list=$1            # Input list of VCF files
+min_support=$2
 merged_vcf="merged_population.vcf"      # Output merged VCF file
 sorted_vcf="merged_population_sorted.vcf" # Sorted merged VCF
 threads=8                               # Number of threads for processing
-min_support=5                           # Minimum support for jasmine merging
+#input_list="inlist.txt"            # Input list of VCF files
+#min_support=5                           # Minimum support for jasmine merging
 
 # Step 1: Merge VCF files
 # - The `inlist.txt` file should contain the paths to all VCF files to be merged.
