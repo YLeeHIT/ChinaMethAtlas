@@ -5,11 +5,11 @@
 # - Step 2: Standardize the filtered VCF format by retaining essential fields and reheadering.
 
 # Constants
-inID=${sample}                                                       # Sample ID as input parameter
-inSample="${inID}.cutesv.force_calling.genotype.vcf"                 # Input sample VCF file
-outFilter="${inID}.Filter.vcf"                                       # Output file after filtering
+inID=$1                                                                 # Sample ID as input parameter
+inSample="${inID}.cuteSV_force_calling.genotype.vcf.gz"                 # Input sample VCF file
+outFilter="${inID}.Filter.vcf.gz"                                       # Output file after filtering
 outStandard="${inID}.Filter.Stand.vcf"                               # Final standardized VCF output file
-threads=16
+threads=4
 
 # Step 1: Filter VCF File
 # Filters the VCF based on chromosome, variant type (INS, DEL, DUP, INV), quality, length, and depth.
@@ -41,7 +41,7 @@ cat <(bcftools view -h "${inSample}") <(bcftools view -H "${inSample}" |
 echo "Standardizing ${inID}"
 echo -e "NULL\t${inID}" > "${inID}.name"
 bcftools reheader -s "${inID}.name" -o "tmp.${outStandard}" "${outFilter}"
-bcftools annotate -x ^INFO/SVTYPE,^INFO/SVLEN,^INFO/END,^FORMAT/GT,^FORMAT/DR,^FORMAT/DV "tmp.${outStandard}" -o "${outStandard}" --threads ${threads}
+bcftools annotate -x ^INFO/SVTYPE,^INFO/SVLEN,^INFO/END,^FORMAT/GT,^FORMAT/DR,^FORMAT/DV "tmp.${outStandard}" -Ov -o "${outStandard}" --threads ${threads}
 
 # Cleanup temporary files
 rm "tmp.${outStandard}" "${inID}.name"
