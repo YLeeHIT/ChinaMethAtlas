@@ -7,11 +7,31 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-linux%20|%20macOS-brightgreen)
 
-<div align="center">
+<div align="left">
     <img src="images/ChinaMeth.png" alt="ChinaMeth" width="300"/>
 </div>
 
-### A comprehensive DNA methylation atlas for the Chinese population through nanopore long-read sequencing of 106 individuals
+- [ChinaMeth profile](#chinameth-profile)
+- [Technological advances](#technological-advances)
+- [Breakgthrough findings](#breakgthrough-findings)
+- [Benefits for Future Researchers](#benefits-for-future-researchers)
+- [Analysis Workflow](#analysis-workflow)
+    - [Methylation workflow](#methylation-workflow)
+    - [Additional Enrichment (Guppy + Nanopolish Traditional Workflow)](#additional-enrichment-guppy--nanopolish-traditional-workflow)
+    - [SV workflow](#sv-workflow)
+    - [DEL workflow](#del-workflow)
+    - [INS workflow](#ins-workflow)
+    - [ME workflow](#me-workflow)
+- [Demo & Usage Examples](#demo--usage-examples)
+    - [Folder Overview](#folder-overview)
+    - [Example: `DEL/` - Deletion Pipeline](#example-del---deletion-pipeline)
+- [Directory Structure](#directory-structure)
+- [Website](#website)
+- [License](#license)
+- [Citation](#citation)
+- [Contact](#contact)
+
+## ChinaMeth profile
 
 <div align="center">
     <img src="images/chinameth.png" alt="chinameth" width="900"/>

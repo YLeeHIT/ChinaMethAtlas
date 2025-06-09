@@ -1,0 +1,2 @@
+sam1.Filter.Stand.vcf
+sam2.Filter.Stand.vcf

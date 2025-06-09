@@ -1,0 +1,8 @@
+pod5
+dorado
+remora
+modkit
+jasmine
+minimap2
+bcftools
+
