@@ -5,11 +5,11 @@
 # - Step 2: Standardize the filtered VCF format by retaining essential fields and reheadering.
 
 # Constants
-inID=${sample}                                                       # Sample ID as input parameter
-inSample="${inID}.cutesv.force_calling.genotype.vcf"                 # Input sample VCF file
-outFilter="${inID}.Filter.vcf"                                       # Output file after filtering
-outStandard="${inID}.Filter.Stand.vcf"                               # Final standardized VCF output file
-threads=16
+inID=$1                                                                 # Sample ID as input parameter
+inSample="${inID}.cuteSV_force_calling.genotype.vcf.gz"                 # Input sample VCF file
+outFilter="${inID}.Filter.vcf.gz"                                       # Output file after filtering
+outStandard="${inID}.Filter.Stand.vcf.gz"                               # Final standardized VCF output file
+threads=4
 
 # Step 1: Filter VCF File
 # Filters the VCF based on chromosome, variant type (INS, DEL, DUP, INV), quality, length, and depth.

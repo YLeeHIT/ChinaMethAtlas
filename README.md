@@ -136,26 +136,28 @@ Each folder in the `scripts/` directory corresponds to a specific pipeline or an
 
 ---
 
-###  Example: `INS/` - Insertion Pipeline
+###  Example: `DEL/` - Deletion Pipeline
 
-**1. Input files:**
+**1. Description:**
 
-Demo/for_INS/input.bed
-Demo/for_INS/config.yaml
+This pipeline identifies methylation signatures around DEL events and summarizes them by sample and region.
 
-**2. Run:**
-```bash
-bash run_INS_pipeline.sh example_data/INS/config.yaml
-```
+**2. Input files:**
 
-**3. Expected output:**
+./Demo/for_DEL/sam1.cuteSV_force_calling.genotype.vcf.gz
+./Demo/for_DEL/sam2.cuteSV_force_calling.genotype.vcf.gz
 
-Demo/for_INS/INS_results_summary.tsv
-Demo/for_INS/INS_methylation_matrix.tsv
+**3. Run scripts:**
 
-**4. Description:**
+| Step | Script Path | Command | Description | Input | Output |
+|------|-------------|---------|-------------|--------|--------|
+| 1 | `scripts/DEL/sv_sampleFilter.sh` | `bash ../../scripts/DEL/sv_sampleFilter.sh sam1` | Filter and standardize individual VCF file | `sam1.vcf.gz` | `sam1.Filter.Stand.vcf.gz` |
+| 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop1_filtered_DEL.vcf` |
+| 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh invcf.vcf.gz` | Extract heterozygous deletions (DELs) from population VCF | `invcf.vcf.gz` | `pop.cpg` |
 
-This pipeline identifies methylation signatures around insertion events and summarizes them by sample and region.
+**4. Expected output:**
+
+./Demo/for_DEL/pop.cpg
 
 ## Directory Structure
 - `data/`: Contains raw and processed data files
