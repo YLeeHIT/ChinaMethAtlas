@@ -164,20 +164,23 @@ This pipeline identifies methylation signatures around DEL events and summarizes
 
 **2. Input files:**
 
-./Demo/for_DEL/sam1.cuteSV_force_calling.genotype.vcf.gz
-./Demo/for_DEL/sam2.cuteSV_force_calling.genotype.vcf.gz
+The input VCF file should be **structural variation calls that have been force-called** using tools like `cuteSV`, `Sniffles`, `SVIM`, and `NanoVar`.
+Example:
+    ./Demo/for_DEL/sam.cuteSV_force_calling.genotype.vcf.gz
 
 **3. Run scripts:**
 
 | Step | Script Path | Command | Description | Input | Output |
 |------|-------------|---------|-------------|--------|--------|
 | 1 | `scripts/DEL/sv_sampleFilter.sh` | `bash ../../scripts/DEL/sv_sampleFilter.sh sam1` | Filter and standardize individual VCF file | `sam1.vcf.gz` | `sam1.Filter.Stand.vcf.gz` |
-| 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt 2` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop1_filtered_DEL.vcf` |
-| 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh invcf.vcf.gz` | Extract heterozygous deletions (DELs) from population VCF | `invcf.vcf.gz` | `pop.cpg` |
+| 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt 2 pop` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop1_filtered_DEL_AC2.vcf` |
+| 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh pop_filtered_DEL_AC2.vcf` | Extract heterozygous deletions (DELs) from population VCF | `invcf.vcf.gz` | `pop.cpg` |
+| 4 | `scripts/DEL/DEL_plot.R` | ` ` | Draw scatter plots and density maps of DEL and its flanking regions | `pop.cpg` | ` ` |
 
 **4. Expected output:**
-
-./Demo/for_DEL/pop.cpg
+The output cpg files include heterozygous deletions and their surrounding methylation context
+Example:
+    ./Demo/for_DEL/pop.cpg
 
 ## Directory Structure
 - `data/`: Contains raw and processed data files
