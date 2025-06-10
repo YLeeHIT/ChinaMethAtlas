@@ -27,8 +27,6 @@
     - [Example: `DEL/` - Deletion Pipeline](#example-del---deletion-pipeline)
 - [Directory Structure](#directory-structure)
 - [Release](#release)
-    - [v1.1](#v1.1-release-notes)
-    - [v1.2](#v1.2-release-notes)
 - [Website](#website)
 - [License](#license)
 - [Citation](#citation)
@@ -213,6 +211,7 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 - Added complete DEL module demo (input data, script, expected output)
 - Updated DEL folder structure and usage guide
 
+For the stable version, please use the `main` branch 
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
