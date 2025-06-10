@@ -205,7 +205,7 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 - Updated README with usage instructions
 - Organized initial workflow structure, including INS, DEL, and ONT modules
 
-## v1.2 Release Notes
+### v1.2 Release Notes
 
 - Fixed bug in DEL processing pipeline related to methylation extraction
 - Added complete DEL module demo (input data, script, expected output)
