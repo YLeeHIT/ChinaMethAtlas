@@ -26,6 +26,9 @@
     - [Folder Overview](#folder-overview)
     - [Example: `DEL/` - Deletion Pipeline](#example-del---deletion-pipeline)
 - [Directory Structure](#directory-structure)
+- [Release](#release)
+    - [v1.1](#v1.1-release-notes)
+    - [v1.2](#v1.2-release-notes)
 - [Website](#website)
 - [License](#license)
 - [Citation](#citation)
@@ -195,6 +198,22 @@ Example:
 ## Website
 Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR, on our interctive [ChinaMeth](http://bioinformatics.hit.edu.cn/methylation).
 
+## Release
+
+### v1.1 Release Notes
+
+- Added basic project description
+- Provided core scripts for structural variation and methylation analysis
+- Updated README with usage instructions
+- Organized initial workflow structure, including INS, DEL, and ONT modules
+
+## v1.2 Release Notes
+
+- Fixed bug in DEL processing pipeline related to methylation extraction
+- Added complete DEL module demo (input data, script, expected output)
+- Updated DEL folder structure and usage guide
+
+
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
@@ -203,4 +222,3 @@ If you use ChinaMethAtlas in your research, please cite the following paper: **A
 
 ## Contact
 For any questions, please contact [email](yli21b@hit.edu.cn)
-
