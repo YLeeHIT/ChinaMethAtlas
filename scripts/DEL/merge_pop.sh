@@ -13,6 +13,7 @@
 # Constants
 input_list=$1            # Input list of VCF files
 min_support=$2
+pop=$3
 merged_vcf="merged_population.vcf"      # Output merged VCF file
 sorted_vcf="merged_population_sorted.vcf" # Sorted merged VCF
 threads=8                               # Number of threads for processing
@@ -38,26 +39,26 @@ bcftools sort ${standardized_vcf} -o ${sorted_standardized_vcf}
 # Step 4: Split by population
 # - Example: Creating a sample list for the each population and extracting their VCF data.
 echo "Step 4: Splitting VCF by population..."
-pop_list="pop_samples.txt"
-pop_vcf="pop_samples.vcf"
+pop_list="${pop}_samples.txt"
+pop_vcf="${pop}_samples.vcf"
 bcftools view -S ${pop_list} -o ${pop_vcf} ${sorted_standardized_vcf}
 
 # Step 5: Filter population VCF by HWE and genotype
 # - Filter based on HWE threshold and genotype quality.
-pop="population_name"  # Replace with actual population name (e.g., "north", "south", and "xizang")
-AC=$(( $(wc -l < pop_list) / 2 )) # Ensure high frequency of heterozygous DEL in the population
+pop="${pop}"  # Replace with actual population name (e.g., "north", "south", and "xizang")
+AC=$(( $(wc -l < "${pop_list}") / 2 )) # Ensure high frequency of heterozygous DEL in the population
 hwe_threshold=1e-6
 geno_threshold=0.1
 echo "Step 5: Filtering VCF by HWE and genotype for ${pop}..."
 
-vcftools --vcf ${pop}.vcf --max-missing 0.5 --hwe ${hwe_threshold} --recode --recode-INFO-all --out ${pop}_filtered_hwe
+vcftools --vcf ${pop}_samples.vcf --max-missing 0.5 --hwe ${hwe_threshold} --recode --recode-INFO-all --out ${pop}_filtered_hwe
 
 # Step 6: Split by specific SV types (INS, DEL, DUP, INV)
 echo "Step 6: Splitting VCF by specific SV types for ${pop}..."
-
-invcf="${pop}_filtered_hwe_recode.vcf"
+invcf="${pop}_filtered_hwe.recode.vcf"
 bcftools view -i 'INFO/SVTYPE="INS"' ${invcf} -o ${pop}_filtered_INS.vcf
-bcftools view -i "INFO/SVTYPE="DEL" && INFO/AN-INFO/AC>=${AC}" ${invcf} -o ${pop}_filtered_DEL_AC${AC}.vcf
+bcftools view -i 'INFO/SVTYPE="DEL"' ${invcf} -o ${pop}_filtered_DEL.vcf
+bcftools view -i "INFO/AN-INFO/AC>=${AC}" ${pop}_filtered_DEL.vcf -o ${pop}_filtered_DEL_AC${AC}.vcf
 bcftools view -i 'INFO/SVTYPE="DUP"' ${invcf} -o ${pop}_filtered_DUP.vcf
 bcftools view -i 'INFO/SVTYPE="INV"' ${invcf} -o ${pop}_filtered_INV.vcf
 

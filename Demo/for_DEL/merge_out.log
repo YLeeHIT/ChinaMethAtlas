@@ -1,0 +1,11 @@
+sam1.Filter.Stand.vcf has 370 variants
+sam2.Filter.Stand.vcf has 375 variants
+sam3.Filter.Stand.vcf has 371 variants
+sam4.Filter.Stand.vcf has 380 variants
+Number of threads: 8
+Merging graph ID: chr22_INS_
+Merging graph ID: chr22_INV_
+Merging graph ID: chr22_DUP_
+Merging graph ID: chr22_DEL_
+Merging complete - outputting results
+Number of sets with multiple variants: 422

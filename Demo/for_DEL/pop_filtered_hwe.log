@@ -1,0 +1,17 @@
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf pop_samples.vcf
+	--recode-INFO-all
+	--max-alleles 2
+	--hwe 1e-06
+	--max-missing 0.5
+	--out pop_filtered_hwe
+	--recode
+
+After filtering, kept 4 out of 4 Individuals
+Outputting VCF file...
+After filtering, kept 422 out of a possible 422 Sites
+Run Time = 0.00 seconds
