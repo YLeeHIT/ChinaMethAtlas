@@ -174,24 +174,25 @@ Example:
 | Step | Script Path | Command | Description | Input | Output |
 |------|-------------|---------|-------------|--------|--------|
 | 1 | `scripts/DEL/sv_sampleFilter.sh` | `bash ../../scripts/DEL/sv_sampleFilter.sh sam1` | Filter and standardize individual VCF file | `sam1.vcf.gz` | `sam1.Filter.Stand.vcf.gz` |
-| 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt 2 pop` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop1_filtered_DEL_AC2.vcf` |
-| 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh pop_filtered_DEL_AC2.vcf` | Extract heterozygous deletions (DELs) from population VCF | `invcf.vcf.gz` | `pop.cpg` |
-| 4 | `scripts/DEL/DEL_plot.R` | ` ` | Draw scatter plots and density maps of DEL and its flanking regions | `pop.cpg` | ` ` |
+| 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt 2 pop` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop_filtered_DEL_AC2.vcf` |
+| 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh pop_filtered_DEL_AC2.vcf pop 0_sam1` | Extract heterozygous deletions (DELs) from population VCF | `pop_filtered_DEL_AC2.vcf` | `pop_0_sam1.cpg` |
+| 4 | `scripts/DEL/DEL_plot.R` |  | Draw scatter plots and density maps of DEL and its flanking regions | `pop.cpg` |  |
 
 **4. Expected output:**
 The output cpg files include heterozygous deletions and their surrounding methylation context
 Example:
-    ./Demo/for_DEL/pop.cpg
+    ./Demo/for_DEL/pop_0_sam1.cpg
 
 ## Directory Structure
-- `data/`: Contains raw and processed data files
-- `scripts/`: Contains scripts for data processing and analysis
+- `data/`: Contains raw and processed data files.
+- `scripts/`: Contains scripts for data processing and analysis.
     - `DEL/`: Scripts specific to DEL analysis, including sample filtering, population merging, methylation level calculation, and plotting.
     - `INS/`: Scripts specific to INS analysis, including population merging, methylation level calculation, and plotting.
     - `MEG/`: Scripts specific to locate the source of INS and annotate the consensus sequence.    
     - `Others/`: Other statistical analysis scripts.    
-- `plots/`: Contains generated plots and visualizations
-- `docs/`: Documentation and Usage instructions
+- `plots/`: Contains generated plots and visualizations.
+- `Demo/`: Provides data examples for selected scripts in the project.
+- `images/`: Cotains icons.
 
 ## Website
 Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR, on our interctive [ChinaMeth](http://bioinformatics.hit.edu.cn/methylation).
@@ -205,7 +206,7 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 - Updated README with usage instructions
 - Organized initial workflow structure, including INS, DEL, and ONT modules
 
-## v1.2 Release Notes
+### v1.2 Release Notes
 
 - Fixed bug in DEL processing pipeline related to methylation extraction
 - Added complete DEL module demo (input data, script, expected output)

@@ -10,13 +10,12 @@
 # - Step 5: merge all cpg files
 
 # Define input parameters and file paths
-sample="sample_name"           # Sample identifier
-population="population_name"   # Population name
-indir="input_directory"        # Input directory for population-specific DEL data
-infile="input_pop.vcf"         # Input VCF file for DEL information
-noImBed="input_meth.bed"       # BED file of CpGs
-genome="genome_position.txt"   # Genome file for bedtools flank operations
-threads=16                     # CPU threads for parallel processing
+infile=$1                       # Input VCF file for DEL information
+population=$2                   # Population name
+sample=$3                       # Sample identifier
+noImBed="${sample}_noIm.bed"    # BED file of CpGs
+genome="../../data/genome.pos"  # Genome file for bedtools flank operations
+threads=4                       # CPU threads for parallel processing
 
 # Step 0: Extract 0/1 and 1/1 DELs
 echo "Step 0: Extracting high-frequency 0/1 DELs"
@@ -32,13 +31,13 @@ bcftools view -H ${infile} | grep -v "0\/1" >> ${outfile2}
 echo "Step 1: Constructing DEL body methylation data"
 invcf="${outfile1}"
 bcftools view -s ${sample} ${invcf} -o "${sample}_01.vcf"
-bcftools view -H "${sample}_raw_01.vcf" | grep "0\/1" | \
+bcftools view -H "${sample}_01.vcf" | grep "0\/1" | \
         awk 'BEGIN{OFS="\t"}{split($8,x,";"); split(x[2],y,"="); len=(y[2]<0) ? -y[2] : y[2]; split(x[3],z,"="); end=z[2];
         print $1,$2,end,len}' > "${sample}_01.bed"
 
 # Intersect with non-imprint regions and calculate CpG count and mean
-inDel="${sample}_raw_01.bed"
-bedtools intersect -a ${noImBed} -b ${inDel} -wa -wb | sort -k6,6V -k7,7n -k9,9V | \
+inDel="${sample}_01.bed"
+bedtools intersect -a ${noImBed} -b ${inDel} -wa -wb | sort -k6,6V -k7,7n | \
         datamash -g 6,7,8,9 count 4 mean 5 | \
         datamash -g 1,2,3 absmax 5,6 | awk '$4>=5' > "${sample}_01_CpG_5.seg"
 cut -f 1,2,3 "${sample}_01_CpG_5.seg" > "${sample}_01_CpG_5.pos"
@@ -120,6 +119,7 @@ awk -v OFS='\t' '{
 }' ${outFile} > ${finalOutput}
 
 # Step 6: Merge all sample CpG files
-cat ./*cpg |sort -k1,1V -k2,2n -k3,3n |datamash -g 1,2,3 -R 2 mean 4,5,6 count 10 |awk '{print $0"\t"$3-$2}' > ../${population}.cpg
+#cat ./*cpg |sort -k1,1V -k2,2n -k3,3n |datamash -g 1,2,3 -R 2 mean 4,5,6 count 10 |awk '{print $0"\t"$3-$2}' > ../${population}.cpg
+cat ${finalOutput} |sort -k1,1V -k2,2n -k3,3n |datamash -g 1,2,3 -R 2 mean 4,5,6 count 10 |awk '{print $0"\t"$3-$2}' > ${population}_${sample}.cpg
 
 echo "DEL methylation level calculation, normalization, and integration all cpgs completed successfully."

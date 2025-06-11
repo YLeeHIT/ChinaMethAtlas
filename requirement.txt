@@ -5,4 +5,5 @@ modkit
 jasmine
 minimap2
 bcftools
+datamash
 
