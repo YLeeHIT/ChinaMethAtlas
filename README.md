@@ -166,8 +166,6 @@ This pipeline identifies methylation signatures around DEL events and summarizes
 **2. Input files:**
 
 The input VCF file should be **structural variation calls that have been force-called** using tools like `cuteSV`, `Sniffles`, `SVIM`, and `NanoVar`.
-Example:
-    ./Demo/for_DEL/sam.cuteSV_force_calling.genotype.vcf.gz
 
 **3. Run scripts:**
 
@@ -179,9 +177,8 @@ Example:
 | 4 | `scripts/DEL/DEL_plot.R` |  | Draw scatter plots and density maps of DEL and its flanking regions | `pop.cpg` |  |
 
 **4. Expected output:**
+
 The output cpg files include heterozygous deletions and their surrounding methylation context.
-Example:
-    ./Demo/for_DEL/pop_0_sam1.cpg
 
 ###  Example: `INS/` - Deletion Pipeline
 
@@ -192,20 +189,19 @@ The INS analysis pipeline focuses on extracting and analyzing DNA methylation si
 **2. Input files:**
 
 Input files are BAM files processed with Dorado and Remora, containing methylation modification signals.
-Example:.`/Demo/for_INS/pop_0_sam1.bam`
 
 **3. Run scripts:**
 
 | Step | Script Path | Command | Description | Input | Output |
 |------|-------------|---------|-------------|--------|--------|
-| 1 | `extractReadFromINS.py` | `python extractReadFromINS.py -i ins_variants.vcf.gz -m sample1.meth.bed -o ins_signal.tsv` | Extracts methylation signals and sequences around INS variants | Insertion VCF, methylation file | `ins_signal.tsv` |
+| 1 | `extractReadFromINS.py` | `python ../../scripts/INS/extractReadFromINS.py --bam sam1_chr1_710579.txt --vcf chr1_710579.txt --out ./out` | Extracts methylation signals and sequences around INS variants | Bam file, vcf position file | `sam1.meth` |
 | 2 | `compareSide2kbINS.sh` | `bash compareSide2kbINS.sh ins_signal.tsv` | Compares methylation levels between INS and ±2kb flanking regions | `ins_signal.tsv` | `ins_compare.tsv` |
 | 3 | `ins_pop_merge.sh` | `bash ins_pop_merge.sh sample_list.txt` | Merges methylation files across individuals into one summary file | List of sample methylation files | `ins_population_summary.tsv` |
 | 4 | `INS_plot.R` | `Rscript INS_plot.R ins_population_summary.tsv` | Generates scatter and density plots for INS methylation patterns | `ins_population_summary.tsv` | Figures (PDF/PNG) |
 
 **4. Expected output:**
+
 Raw methylation data extracted from INS and flanking regions.
-Example:.`/Demo/for_INS/pop_0_sam1.cpg`
 
 
 ## Directory Structure
