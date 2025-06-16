@@ -4,6 +4,7 @@ remora
 modkit
 jasmine
 minimap2
+samtools
 bcftools
+abpoa
 datamash
-

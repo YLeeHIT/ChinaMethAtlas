@@ -221,6 +221,12 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 
 ## Release
 
+### v1.3 Release Notes
+
+- Fixed bug in INS processing pipeline related to methylation extraction
+- Added complete INS module demo (input data, script, expected output)
+- Updated INS folder structure and usage guide
+
 ### v1.2 Release Notes
 
 - Fixed bug in DEL processing pipeline related to methylation extraction
