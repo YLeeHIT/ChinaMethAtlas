@@ -219,6 +219,19 @@ Raw methylation data extracted from INS and flanking regions.
 ## Website
 Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR, on our interctive [ChinaMeth](http://bioinformatics.hit.edu.cn/methylation).
 
+## Future Work
+
+To enhance the reproducibility and scope of structural variant (SV)-associated methylation analysis, we are developing `methSV`, a modular and fully executable Nextflow pipeline.
+
+This upcoming workflow will address a key limitation in the current Oxford Nanopore EPI2ME platform: the lack of SV-aware methylation signal extraction and joint analysis. By integrating SV annotations (e.g., from Sniffles) with modified base information (e.g., from Remora-annotated modBAM files), `methSV` will allow users to extract, quantify, and visualize DNA methylation patterns across SV regions, including insertions (INS), deletions (DEL), and mobile element insertions (MEG).
+
+Importantly, this pipeline will consolidate and formalize the core scripts previously developed within this repository, including those used for DEL, INS, and MEG-specific methylation analyses. These scripts will be encapsulated into a unified, scalable framework based on Nextflow, enabling:
+
+- Region-based methylation extraction from SV-overlapping modBAM files
+- Automated, parallelizable execution on local or cloud infrastructure
+- Easy customization and reproducibility across studies
+- Seamless integration with population-scale SV datasets
+
 ## Release
 
 ### v1.3 Release Notes
