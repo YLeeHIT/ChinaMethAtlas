@@ -26,9 +26,15 @@
     - [Folder Overview](#folder-overview)
     - [Example: `DEL/` - Deletion Pipeline](#example-del---deletion-pipeline)
     - [Example: `INS/` - Insertion Pipeline](#example-ins---insertion-pipeline)
+    - [Example: `MEG/` - Mobile Element Pipeline](#example-me---mobile-element-pipeline)
 - [Directory Structure](#directory-structure)
 - [Release](#release)
+    - [v1.1 Release Notes](#v11-release-notes)
+    - [v1.2 Release Notes](#v12-release-notes)
+    - [v1.3 Release Notes](#v13-release-notes)
+    - [v1.4 Release Notes](#v14-release-notes)
 - [Website](#website)
+- [Future Work](#future-work)
 - [License](#license)
 - [Citation](#citation)
 - [Contact](#contact)
@@ -205,6 +211,9 @@ Input files are BAM files processed with Dorado and Remora, containing methylati
 Raw methylation data extracted from INS and flanking regions.
 
 
+###  Example: `MEG/` - Mobile Element Pipeline
+
+
 ## Directory Structure
 - `data/`: Contains raw and processed data files.
 - `scripts/`: Contains scripts for data processing and analysis.
@@ -233,6 +242,13 @@ Importantly, this pipeline will consolidate and formalize the core scripts previ
 - Seamless integration with population-scale SV datasets
 
 ## Release
+
+### v1.4 Release Notes
+
+- Added support for Mobile Element-associated Genomic methylation (MEG) analysis and annotation
+- Implemented scripts for extracting methylation levels around ME insertions
+- Provided demo data and usage examples for the MEG module
+- Updated MEG folder with structured workflow and documentation
 
 ### v1.3 Release Notes
 
