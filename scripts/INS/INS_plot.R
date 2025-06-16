@@ -12,6 +12,7 @@ library(ggtern)    # For ternary plots (if necessary)
 # Args:
 #   file_path: Path to the data file
 #   cutoff: The threshold for filtering out small methylation differences
+
 plot_InsDensity <- function(file_path, cutoff) {
   # Read in the data
   all_data <- read.table(file_path, header = FALSE)
@@ -81,6 +82,7 @@ plot_InsDensity <- function(file_path, cutoff) {
 # Args:
 #   file_path: Path to the data file
 #   cutoff: The threshold for filtering out small methylation differences
+
 plot_InsDensity2 <- function(file_path, cutoff) {
   # Read in the data
   all_data <- read.table(file_path, header = FALSE)
@@ -128,10 +130,8 @@ plot_InsDensity2 <- function(file_path, cutoff) {
 # Args:
 #   file_path: Path to the data file.
 #   cutoff: The cutoff for filtering methylation differences (below which points are excluded from the plot).
+
 plot_InsAll <- function(file_path, cutoff) {
-  
-  # Load and process data
-  # Read the data file into a data frame
   all_data <- read.table(file_path, header = FALSE)
   colnames(all_data) <- c("Chr", "Start", "End", "Body", "Up", "Down", 
                           "UpNum", "DownNum", "SBody", "SUp", "SDown", "Number")

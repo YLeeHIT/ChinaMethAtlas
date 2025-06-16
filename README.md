@@ -25,6 +25,7 @@
 - [Demo & Usage Examples](#demo--usage-examples)
     - [Folder Overview](#folder-overview)
     - [Example: `DEL/` - Deletion Pipeline](#example-del---deletion-pipeline)
+    - [Example: `INS/` - Insertion Pipeline](#example-ins---insertion-pipeline)
 - [Directory Structure](#directory-structure)
 - [Release](#release)
 - [Website](#website)
@@ -151,9 +152,9 @@ Each folder in the `scripts/` directory corresponds to a specific pipeline or an
 |--------|-------------|-------------------|
 | `DEL/` | Pipeline for deletion (DEL) events | ✅ |
 | `INS/` | Pipeline for insertion (INS) events | ✅ |
-| `MEG/` | Pipeline for mobile element events | ✅ |
-| `ONT/` | The process from fast5 signal to final bed methylation file | ✅ |
-| `Others/` | Miscellaneous scripts and utilities |❌|   
+| `MEG/` | Pipeline for mobile element events | ❌|
+| `ONT/` | The process from fast5 signal to final bed methylation file | ❌|
+| `Others/` | Miscellaneous scripts and utilities |❌| 
 
 ---
 
@@ -166,8 +167,6 @@ This pipeline identifies methylation signatures around DEL events and summarizes
 **2. Input files:**
 
 The input VCF file should be **structural variation calls that have been force-called** using tools like `cuteSV`, `Sniffles`, `SVIM`, and `NanoVar`.
-Example:
-    ./Demo/for_DEL/sam.cuteSV_force_calling.genotype.vcf.gz
 
 **3. Run scripts:**
 
@@ -176,12 +175,35 @@ Example:
 | 1 | `scripts/DEL/sv_sampleFilter.sh` | `bash ../../scripts/DEL/sv_sampleFilter.sh sam1` | Filter and standardize individual VCF file | `sam1.vcf.gz` | `sam1.Filter.Stand.vcf.gz` |
 | 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt 2 pop` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop_filtered_DEL_AC2.vcf` |
 | 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh pop_filtered_DEL_AC2.vcf pop 0_sam1` | Extract heterozygous deletions (DELs) from population VCF | `pop_filtered_DEL_AC2.vcf` | `pop_0_sam1.cpg` |
-| 4 | `scripts/DEL/DEL_plot.R` |  | Draw scatter plots and density maps of DEL and its flanking regions | `pop.cpg` |  |
+| 4 | `scripts/DEL/DEL_plot.R` |  | Draw scatter plots and density maps of DEL and its flanking regions | Path to the DEL methylation data file (file_path), Threshold for filtering DELs based on methylation difference (cutoff)  | Figures (tiff) |
 
 **4. Expected output:**
-The output cpg files include heterozygous deletions and their surrounding methylation context
-Example:
-    ./Demo/for_DEL/pop_0_sam1.cpg
+
+The output cpg files include heterozygous deletions and their surrounding methylation context.
+
+###  Example: `INS/` - Insertion Pipeline
+
+**1. Description:**
+
+The INS analysis pipeline focuses on extracting and analyzing DNA methylation signals around insertion (INS) structural variants.
+
+**2. Input files:**
+
+Input files are BAM files processed with Dorado and Remora, containing methylation modification signals.
+
+**3. Run scripts:**
+
+| Step | Script Path | Command | Description | Input | Output |
+|------|-------------|---------|-------------|--------|--------|
+| 1 | `extractReadFromINS.py` | `python ../../scripts/INS/extractReadFromINS.py --bam sam1_chr1_710579.txt --vcf chr1_710579.txt --out ./out` | Extracts methylation signals and sequences around INS variants | Bam file, vcf position file | `sam1.meth` |
+| 2 | `compareSide2kbINS.sh` | `bash compareSide2kbINS.sh sam1` | Compares methylation levels between INS and ±2kb flanking regions | sample ID | `sam1_ins.cpg` |
+| 3 | `ins_pop_merge.sh` | `bash ins_pop_merge.sh pop` | Merges individual methylation files into a population-level file | Population ID | `pop.result` |
+| 4 | `INS_plot.R` |  | Generates scatter and density plots for INS methylation patterns | Path to the data file (file_path), The threshold for filtering out small methylation differences (cutoff) | Figures (tiff) |
+
+**4. Expected output:**
+
+Raw methylation data extracted from INS and flanking regions.
+
 
 ## Directory Structure
 - `data/`: Contains raw and processed data files.
@@ -199,18 +221,18 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 
 ## Release
 
+### v1.2 Release Notes
+
+- Fixed bug in DEL processing pipeline related to methylation extraction
+- Added complete DEL module demo (input data, script, expected output)
+- Updated DEL folder structure and usage guide
+
 ### v1.1 Release Notes
 
 - Added basic project description
 - Provided core scripts for structural variation and methylation analysis
 - Updated README with usage instructions
 - Organized initial workflow structure, including INS, DEL, and ONT modules
-
-### v1.2 Release Notes
-
-- Fixed bug in DEL processing pipeline related to methylation extraction
-- Added complete DEL module demo (input data, script, expected output)
-- Updated DEL folder structure and usage guide
 
 For the stable version, please use the `main` branch 
 
