@@ -25,6 +25,7 @@
 - [Demo & Usage Examples](#demo--usage-examples)
     - [Folder Overview](#folder-overview)
     - [Example: `DEL/` - Deletion Pipeline](#example-del---deletion-pipeline)
+    - [Example: `INS/` - Insertion Pipeline](#example-ins---insertion-pipeline)
 - [Directory Structure](#directory-structure)
 - [Release](#release)
 - [Website](#website)
@@ -151,9 +152,9 @@ Each folder in the `scripts/` directory corresponds to a specific pipeline or an
 |--------|-------------|-------------------|
 | `DEL/` | Pipeline for deletion (DEL) events | ✅ |
 | `INS/` | Pipeline for insertion (INS) events | ✅ |
-| `MEG/` | Pipeline for mobile element events | ✅ |
-| `ONT/` | The process from fast5 signal to final bed methylation file | ✅ |
-| `Others/` | Miscellaneous scripts and utilities |❌|   
+| `MEG/` | Pipeline for mobile element events | ❌|
+| `ONT/` | The process from fast5 signal to final bed methylation file | ❌|
+| `Others/` | Miscellaneous scripts and utilities |❌| 
 
 ---
 
@@ -180,7 +181,7 @@ The input VCF file should be **structural variation calls that have been force-c
 
 The output cpg files include heterozygous deletions and their surrounding methylation context.
 
-###  Example: `INS/` - Deletion Pipeline
+###  Example: `INS/` - Insertion Pipeline
 
 **1. Description:**
 
@@ -195,9 +196,9 @@ Input files are BAM files processed with Dorado and Remora, containing methylati
 | Step | Script Path | Command | Description | Input | Output |
 |------|-------------|---------|-------------|--------|--------|
 | 1 | `extractReadFromINS.py` | `python ../../scripts/INS/extractReadFromINS.py --bam sam1_chr1_710579.txt --vcf chr1_710579.txt --out ./out` | Extracts methylation signals and sequences around INS variants | Bam file, vcf position file | `sam1.meth` |
-| 2 | `compareSide2kbINS.sh` | `bash compareSide2kbINS.sh ins_signal.tsv` | Compares methylation levels between INS and ±2kb flanking regions | `ins_signal.tsv` | `ins_compare.tsv` |
-| 3 | `ins_pop_merge.sh` | `bash ins_pop_merge.sh sample_list.txt` | Merges methylation files across individuals into one summary file | List of sample methylation files | `ins_population_summary.tsv` |
-| 4 | `INS_plot.R` | `Rscript INS_plot.R ins_population_summary.tsv` | Generates scatter and density plots for INS methylation patterns | `ins_population_summary.tsv` | Figures (PDF/PNG) |
+| 2 | `compareSide2kbINS.sh` | `bash compareSide2kbINS.sh sam1` | Compares methylation levels between INS and ±2kb flanking regions | sample ID | `sam1_ins.cpg` |
+| 3 | `ins_pop_merge.sh` | `bash ins_pop_merge.sh pop` | Merges individual methylation files into a population-level file | Population ID | `pop.result` |
+| 4 | `INS_plot.R` |  | Generates scatter and density plots for INS methylation patterns | Path to the data file (file_path), The threshold for filtering out small methylation differences (cutoff) | Figures (tiff) |
 
 **4. Expected output:**
 
@@ -220,18 +221,18 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 
 ## Release
 
+### v1.2 Release Notes
+
+- Fixed bug in DEL processing pipeline related to methylation extraction
+- Added complete DEL module demo (input data, script, expected output)
+- Updated DEL folder structure and usage guide
+
 ### v1.1 Release Notes
 
 - Added basic project description
 - Provided core scripts for structural variation and methylation analysis
 - Updated README with usage instructions
 - Organized initial workflow structure, including INS, DEL, and ONT modules
-
-### v1.2 Release Notes
-
-- Fixed bug in DEL processing pipeline related to methylation extraction
-- Added complete DEL module demo (input data, script, expected output)
-- Updated DEL folder structure and usage guide
 
 For the stable version, please use the `main` branch 
 
