@@ -175,7 +175,7 @@ The input VCF file should be **structural variation calls that have been force-c
 | 1 | `scripts/DEL/sv_sampleFilter.sh` | `bash ../../scripts/DEL/sv_sampleFilter.sh sam1` | Filter and standardize individual VCF file | `sam1.vcf.gz` | `sam1.Filter.Stand.vcf.gz` |
 | 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt 2 pop` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop_filtered_DEL_AC2.vcf` |
 | 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh pop_filtered_DEL_AC2.vcf pop 0_sam1` | Extract heterozygous deletions (DELs) from population VCF | `pop_filtered_DEL_AC2.vcf` | `pop_0_sam1.cpg` |
-| 4 | `scripts/DEL/DEL_plot.R` |  | Draw scatter plots and density maps of DEL and its flanking regions | `pop.cpg` |  |
+| 4 | `scripts/DEL/DEL_plot.R` |  | Draw scatter plots and density maps of DEL and its flanking regions | Path to the DEL methylation data file (file_path), Threshold for filtering DELs based on methylation difference (cutoff)  | Figures (tiff) |
 
 **4. Expected output:**
 
