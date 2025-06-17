@@ -240,7 +240,7 @@ This module includes scripts and example results to illustrate the analysis work
 
 ## Website
 
-Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR, on our interctive [ChinaMeth](http://bioinformatics.hit.edu.cn/methylation).
+Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR, on our interctive [ChinaMeth](http://bioinformatics.hit.edu.cn/chinaMeth/#/).
 
 ## Future Work
 
