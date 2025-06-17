@@ -23,7 +23,7 @@ GENOME_POS = "<path_to_genome_pos>"  # Genome position file path
 THREADS = 8  # Number of threads for minimap2
 MIN_METH_DIFF = 0.1  # Minimum methylation difference threshold
 CHROMOSOMES = [f"chr{i}" for i in range(1, 23)]  # Autosomes
-STEP_TWO_SCRIPT = "<path_to_step_two_script>"  # Path to the step two shell script
+STEP_TWO_SCRIPT = "./reAlignTwo.sh"  # Path to the step two shell script
 ROOT_DIR = "<root_directory>"  # Root directory for input and output files
 
 def run_minimap2(cons_file, out_file):
@@ -184,5 +184,11 @@ def realign(sample, pop):
         else:
             print(f"Consensus file {cons_file} does not exist.")
     
-    
-    
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Manual to reAlign")
+    parser.add_argument("--sample", type=str, default="sam1")
+    parser.add_argument("--population", type=str, default="pop")
+    args = parser.parse_args()
+    sample = args.sample
+    pop = args.population
+    realign(sample,pop)       

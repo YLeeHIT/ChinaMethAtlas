@@ -96,7 +96,7 @@ The Methylation analysis pipeline includes the following scripts:
 2. **methylation_phasing.sh**: Performs phasing and calculates haplotype-specific methylation frequencies.
 3. **hDMR_calculate.sh**: Calculates and filters DMRs and DMCs.
 
-### Additional Enrichment (Guppy + Nanopolish Traditional Workflow)
+### Additional Enrichment
 
 For users interested in the traditional Guppy + Nanopolish workflow, we provide the following scripts:
 
@@ -158,7 +158,7 @@ Each folder in the `scripts/` directory corresponds to a specific pipeline or an
 |--------|-------------|-------------------|
 | `DEL/` | Pipeline for deletion (DEL) events | ✅ |
 | `INS/` | Pipeline for insertion (INS) events | ✅ |
-| `MEG/` | Pipeline for mobile element events | ❌|
+| `MEG/` | Pipeline for mobile element events | ✅|    
 | `ONT/` | The process from fast5 signal to final bed methylation file | ❌|
 | `Others/` | Miscellaneous scripts and utilities |❌| 
 
@@ -213,19 +213,33 @@ Raw methylation data extracted from INS and flanking regions.
 
 ###  Example: `MEG/` - Mobile Element Pipeline
 
+**1. Description:**
 
-## Directory Structure
-- `data/`: Contains raw and processed data files.
-- `scripts/`: Contains scripts for data processing and analysis.
-    - `DEL/`: Scripts specific to DEL analysis, including sample filtering, population merging, methylation level calculation, and plotting.
-    - `INS/`: Scripts specific to INS analysis, including population merging, methylation level calculation, and plotting.
-    - `MEG/`: Scripts specific to locate the source of INS and annotate the consensus sequence.    
-    - `Others/`: Other statistical analysis scripts.    
-- `plots/`: Contains generated plots and visualizations.
-- `Demo/`: Provides data examples for selected scripts in the project.
-- `images/`: Cotains icons.
+The MEG analysis builds upon the results from the INS pipeline. It traces the origin of insertion sequences identified in `INS/`, and determines whether these insertions originate from known transposable elements (TEs).
+
+This module includes scripts and example results to illustrate the analysis workflow.
+**Note:** Paths inside the scripts may need to be manually updated based on your environment and file structure.
+
+**2. Input files:**
+
+`sam1_5.cpg`: Methylation file generated from the INS pipeline, representing insertion sequences that contain at least 5 CpG sites.
+
+**3. Run scripts:**
+
+| Step | Script Path | Command | Description | Input | Output |
+|------|-------------|---------|-------------|--------|--------|
+| 1 | `reAlign.py` | `python reAlign.py --sample sam1 --population pop` | Identifies the source location of INS  consensus sequences based on methylation | CpG files | `sam1_reAlign_filter.result` |
+| 2 | `pop_reAlign.py` | `python pop_reAlign.py --population pop` | Merges individual INS analysis results into a single population-level result | Population ID | `pop_reAlign.result` |
+| 3 | `extract_fa.sh` | `bash extract_fa.sh sam1 pop` | Annotates INS (insertion) sequences by aligning them to TEs sequences | Sample ID, Population ID | `pop_merge.result` |
+
+**4. Expected output:**
+
+- `pop_reAlign.result`: Integrated methylation data across all individuals for mobile element (ME) insertions.
+
+- `pop_merge.result`: Combined result of `pop_reAlign.result` with transposable element (TE) annotation.
 
 ## Website
+
 Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR, on our interctive [ChinaMeth](http://bioinformatics.hit.edu.cn/methylation).
 
 ## Future Work

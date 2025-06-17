@@ -1,0 +1,3 @@
+insChr	insPos	insMeth	insUp	insDown	insType	mapChr	overlapCenter	overlapLength	mapMethMean	mapUpMean	mapDownMean	mapType	transType	Support	overlapNum	SMapMethMean	SMapUpMean	SMapDownMean
+chr21	7960775	0.5794	0.7249	0.6785	insLow	chr20	28732220	723	0.5300	0.6924	0.5607	mapLow	High	7	7	0.1540	0.6973	0.2363
+chr21	13042673	0.8364	0.5433	0.7296	insHigh	chr13	18413456	353	0.9288	0.6138	0.7813	mapHigh	Low	5	5	1.0000	0.1639	0.5913
