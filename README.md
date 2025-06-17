@@ -17,7 +17,7 @@
 - [Benefits for Future Researchers](#benefits-for-future-researchers)
 - [Analysis Workflow](#analysis-workflow)
     - [Methylation workflow](#methylation-workflow)
-    - [Additional Enrichment (Guppy + Nanopolish Traditional Workflow)](#additional-enrichment-guppy--nanopolish-traditional-workflow)
+    - [Additional Enrichment (Guppy + Nanopolish Traditional Workflow)](#additional-enrichment)
     - [SV workflow](#sv-workflow)
     - [DEL workflow](#del-workflow)
     - [INS workflow](#ins-workflow)
