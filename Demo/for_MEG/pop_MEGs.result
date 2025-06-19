@@ -1,0 +1,2 @@
+insChr	insPos	insMeth	insUp	insDown	insType	mapChr	mapPos	mapMeth	mapUp	mapDown	mapType	mapLen	transType	overNum	support	seqType	annoType
+chr21	13042673	0.8364	0.5433	0.7296	insHigh	chr13	18413456	0.9286	0.6138	0.7812	mapHigh	353	Low	5	7	Alu	None
