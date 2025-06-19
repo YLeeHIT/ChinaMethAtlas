@@ -230,13 +230,11 @@ This module includes scripts and example results to illustrate the analysis work
 |------|-------------|---------|-------------|--------|--------|
 | 1 | `reAlign.py` | `python reAlign.py --sample sam1 --population pop` | Identifies the source location of INS  consensus sequences based on methylation | CpG files | `sam1_reAlign_filter.result` |
 | 2 | `pop_reAlign.py` | `python pop_reAlign.py --population pop` | Merges individual INS analysis results into a single population-level result | Population ID | `pop_reAlign.result` |
-| 3 | `extract_fa.sh` | `bash extract_fa.sh sam1 pop` | Annotates INS (insertion) sequences by aligning them to TEs sequences | Sample ID, Population ID | `pop_merge.result` |
+| 3 | `extract_fa.sh` | `bash extract_fa.sh sam1 pop` | Annotates INS (insertion) sequences by aligning them to TEs sequences | Sample ID, Population ID | `sam1_pop_MEGs.txt` |
 
 **4. Expected output:**
 
-- `pop_reAlign.result`: Integrated methylation data across all individuals for mobile element (ME) insertions.
-
-- `pop_merge.result`: Combined result of `pop_reAlign.result` with transposable element (TE) annotation.
+- `pop_MEGs.result`: Integrated methylation data across all individuals for mobile element (ME) insertions.
 
 ## Website
 
