@@ -1,98 +1,103 @@
 #!/bin/bash
-# Function: annotate mobile INS
-# Input:
-#   1) pop: [xizang, north, south] population
-#   2）outDir: [best named anno, absolute path] output directory
-# Output
-#   1) all result located in anno directory
-# P.S.
-#   1) If you want change the output directory, you should modify the rootDir 
-#   2) You must run the population integration shell before doing this process
-# Example:
-#   bash annoINSSource.sh xizang xizang_reAlign.result anno
-#
 
-pop=$1
-#inIns=$2
-outPath=$2
-rootDir=/home/user/liyang/shell/DNAmeth/python/newSV/INS/data/repop/${pop}/out
-inIns=${rootDir}/${pop}_reAlign.result
-outDir=${rootDir}/${outPath}
+# Description:
+# Annotates INS regions with various genomic features including gene, exon, promoter,
+# CpG islands (CGI), deletion overlap, and repeat elements (LINE, SINE, LTR, Retroposon).
+# Outputs per-feature annotation and summary statistics.
 
-# only for find pop_num.cpg files and do not perform frequency processing
-if [ "${pop}" == "xizang" ];then
-    num=10
-else
-    num=48
-fi
+# ----------------------
+# Input parameters
+# ----------------------
+pop=$1               # Population name
+outPath=$2           # Subdirectory name for output
+num=$3               # Identifier for DEL group (e.g., 1, 2, 3)
 
-# basic annotation files
-gene="/home/user/liyang/new/data/gtf/comprehensive_gene_annotation/all-gene/gene_2kb"
-exon="/home/user/liyang/new/data/gtf/comprehensive_gene_annotation/genic/exon"
-promoter="/home/user/liyang/new/data/gtf/comprehensive_gene_annotation/genic/promoter"
-CGI="/home/user/liyang/new/data/gtf/comprehensive_gene_annotation/CGI/CGI"
-DEL="/home/user/liyang/shell/DNAmeth/python/newSV/DEL/Pop/${pop}/${pop}_${num}.cpg"
-DEL_all="/home/user/liyang/shell/DNAmeth/python/newSV/data/pop_merge/${pop}/fromDEL2/${pop}_del2.bed"
-SINE="/home/user/liyang/new/data/gtf/comprehensive_gene_annotation/repeat/SINE"
-LINE="/home/user/liyang/new/data/gtf/comprehensive_gene_annotation/repeat/LINE"
-LTR="/home/user/liyang/new/data/gtf/comprehensive_gene_annotation/repeat/LTR"
-Retroposon="/home/user/liyang/new/data/gtf/comprehensive_gene_annotation/repeat/Retroposon"
+# ----------------------
+# Configurable paths
+# ----------------------
+ROOT_DIR="${ROOT_DIR:-../../Demo/for_MEG}"
+IN_INS="${ROOT_DIR}/${pop}_reAlign.result"
+OUT_DIR="${ROOT_DIR}/${outPath}"
 
-test -d ${outDir} || mkdir ${outDir}
-cd ${outDir}
+# Genomic annotation references
+GENE="${GENE:-../../data/gene_2kb}"
+EXON="${EXON:-../../data/exon}"
+PROMOTER="${PROMOTER:-../../data/promoter}"
+CGI="${CGI:-../../data/CGI}"
+DEL="${DEL:-../../data/${pop}_${num}.cpg}"
+DEL_ALL="${DEL_ALL:-../../data/${pop}_del2.bed}"
+SINE="${SINE:-../../data/SINE}"
+LINE="${LINE:-../../data/LINE}"
+LTR="${LTR:-../../data/LTR}"
+RETROPOSON="${RETROPOSON:-../../data/Retroposon}"
 
-inInsBed="${pop}_ins.bed"
-inInsSourceBed="${pop}_ins_source.bed"
-annoGene="${pop}_ins.gene"
-annoCGI="${pop}_ins.CGI"
-annoExon="${pop}_ins.exon"
-annoPromoter="${pop}_ins.promoter"
-annoDEL="${pop}_ins.Del"
-annoDELAll="${pop}_ins.DelAll"
-awk 'NR>1{print $1"\t"$2-100"\t"$2+100"\t"$14}' ${inIns} > ${inInsBed}
-awk 'NR>1{print $7"\t"$8"\t"$8+$9"\t"$14}' ${inIns} > ${inInsSourceBed}
+# ----------------------
+# Create output directory
+# ----------------------
+test -d "${OUT_DIR}" || mkdir -p "${OUT_DIR}"
+cd "${OUT_DIR}"
 
-bedtools intersect -a ${inInsBed} -b ${gene} -wa -wb > ${annoGene}
-bedtools intersect -a ${inInsBed} -b ${exon} -wa -wb > ${annoExon}
-bedtools intersect -a ${inInsBed} -b ${promoter} -wa -wb > ${annoPromoter}
-bedtools intersect -a ${inInsBed} -b ${CGI} -wa -wb > ${annoCGI}
-bedtools intersect -a ${inInsSourceBed} -b ${DEL} -wa -wb -f 0.1 > ${annoDEL}
-bedtools intersect -a ${inInsSourceBed} -b ${DEL_all} -wa -wb -f 0.1 > ${annoDELAll}
-geneNum=$(wc -l ${annoGene} |cut -f1 -d" ")
-exonNum=$(wc -l ${annoExon} |cut -f1 -d" ")
-promNum=$(wc -l ${annoPromoter} |cut -f1 -d" ")
-CGINum=$(wc -l ${annoCGI} |cut -f1 -d" ")
-DELNum=$(wc -l ${annoDEL} |cut -f1 -d" ")
-DELAllNum=$(wc -l ${annoDELAll} |cut -f1 -d" ")
-#bcftools view -H xizang_hwe-6_heter-2.del.vcf |awk 'BEGIN{OFS="\t"}{split($8,x,";");split(x[3],y,"=");split(x[4],z,"=");print $1,$2,y[2],z[2]}' > fromDEL2/xizang_del2.bed
+# ----------------------
+# Prepare INS BED files
+# ----------------------
+INS_BED="${pop}_ins.bed"
+INS_SOURCE_BED="${pop}_ins_source.bed"
 
-# MGEs
-annoLINE="${pop}_ins.LINE"
-annoSINE="${pop}_ins.SINE"
-annoLTR="${pop}_ins.LTR"
-annoRetroposon="${pop}_ins.Retroposon"
-bedtools intersect -a ${inInsBed} -b ${LINE} -wa -wb > ${annoLINE}
-bedtools intersect -a ${inInsBed} -b ${SINE} -wa -wb > ${annoSINE}
-bedtools intersect -a ${inInsBed} -b ${LTR} -wa -wb > ${annoLTR}
-bedtools intersect -a ${inInsBed} -b ${Retroposon} -wa -wb > ${annoRetroposon}
-LINENum=$(wc -l ${annoLINE} |cut -f1 -d" ")
-SINENum=$(wc -l ${annoSINE} |cut -f1 -d" ")
-LTRNum=$(wc -l ${annoLTR} |cut -f1 -d" ")
-RetroposonNum=$(wc -l ${annoRetroposon} |cut -f1 -d" ")
+awk 'NR > 1 {print $1, $2 - 100, $2 + 100, $14}' OFS='\t' "${IN_INS}" > "${INS_BED}"
+awk 'NR > 1 {print $7, $8, $8 + $9, $14}' OFS='\t' "${IN_INS}" > "${INS_SOURCE_BED}"
 
-# statistic
-outSta="${pop}_anno.sta"
-echo -e "Type\tNum" > ${outSta}
-echo -e "Gene\t${geneNum}" >> ${outSta}
-echo -e "Exon\t${exonNum}" >> ${outSta}
-echo -e "Promoter\t${promNum}" >> ${outSta}
-echo -e "CGI\t${CGINum}" >> ${outSta}
-echo -e "DEL\t${DELNum}" >> ${outSta}
-echo -e "DEL_all\t${DELAllNum}" >> ${outSta}
-echo -e "LINE\t${LINENum}" >> ${outSta}
-echo -e "SINE\t${SINENum}" >> ${outSta}
-echo -e "LTR\t${LTRNum}" >> ${outSta}
-echo -e "Retroposon\t${RetroposonNum}" >> ${outSta}
-echo -e "Annotation of ${pop} has finished"
+# ----------------------
+# Perform annotation using bedtools intersect
+# ----------------------
+bedtools intersect -a "${INS_BED}" -b "${GENE}"      -wa -wb > "${pop}_ins.gene"
+bedtools intersect -a "${INS_BED}" -b "${EXON}"      -wa -wb > "${pop}_ins.exon"
+bedtools intersect -a "${INS_BED}" -b "${PROMOTER}"  -wa -wb > "${pop}_ins.promoter"
+bedtools intersect -a "${INS_BED}" -b "${CGI}"       -wa -wb > "${pop}_ins.CGI"
+bedtools intersect -a "${INS_SOURCE_BED}" -b "${DEL}"     -wa -wb -f 0.1 > "${pop}_ins.Del"
+bedtools intersect -a "${INS_SOURCE_BED}" -b "${DEL_ALL}" -wa -wb -f 0.1 > "${pop}_ins.DelAll"
+
+bedtools intersect -a "${INS_BED}" -b "${LINE}"       -wa -wb > "${pop}_ins.LINE"
+bedtools intersect -a "${INS_BED}" -b "${SINE}"       -wa -wb > "${pop}_ins.SINE"
+bedtools intersect -a "${INS_BED}" -b "${LTR}"        -wa -wb > "${pop}_ins.LTR"
+bedtools intersect -a "${INS_BED}" -b "${RETROPOSON}" -wa -wb > "${pop}_ins.Retroposon"
+
+# ----------------------
+# Count annotated entries
+# ----------------------
+count_lines() {
+    wc -l "$1" | cut -f1 -d" "
+}
+
+geneNum=$(count_lines "${pop}_ins.gene")
+exonNum=$(count_lines "${pop}_ins.exon")
+promoterNum=$(count_lines "${pop}_ins.promoter")
+cgiNum=$(count_lines "${pop}_ins.CGI")
+delNum=$(count_lines "${pop}_ins.Del")
+delAllNum=$(count_lines "${pop}_ins.DelAll")
+lineNum=$(count_lines "${pop}_ins.LINE")
+sineNum=$(count_lines "${pop}_ins.SINE")
+ltrNum=$(count_lines "${pop}_ins.LTR")
+retroNum=$(count_lines "${pop}_ins.Retroposon")
+
+# ----------------------
+# Output summary statistics
+# ----------------------
+STAT_OUT="${pop}_anno.sta"
+{
+    echo -e "Type\tNum"
+    echo -e "Gene\t${geneNum}"
+    echo -e "Exon\t${exonNum}"
+    echo -e "Promoter\t${promoterNum}"
+    echo -e "CGI\t${cgiNum}"
+    echo -e "DEL\t${delNum}"
+    echo -e "DEL_all\t${delAllNum}"
+    echo -e "LINE\t${lineNum}"
+    echo -e "SINE\t${sineNum}"
+    echo -e "LTR\t${ltrNum}"
+    echo -e "Retroposon\t${retroNum}"
+} > "${STAT_OUT}"
+
+echo "INS annotation for population ${pop} completed. Summary saved to ${STAT_OUT}"
+
 
 
