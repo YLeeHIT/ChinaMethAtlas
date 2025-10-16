@@ -255,8 +255,6 @@ Importantly, this pipeline will consolidate and formalize the core scripts previ
 
 ## Release
 
-### v1.5 Release Notes
-
 ### v1.4 Release Notes
 
 - Added support for Mobile Element-associated Genomic methylation (MEG) analysis and annotation
