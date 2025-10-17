@@ -28,9 +28,11 @@ CpG sites located on **autosomes (chr1–22)** were retained for comparison.
 The mean value was used to summarize CpG counts across studies.  
 Differences in CpG detection between ONT and WGBS were quantified using the following delta value:
 
-\[
-\Delta = \frac{CpG_{ONT} - CpG_{WGBS}}{CpG_{WGBS}}
-\]
+
+<p align="center">
+    <img src="https://latex.codecogs.com/svg.image?\Delta=\frac{CpG_{ONT}-CpG_{WGBS}}{CpG_{WGBS}}" title="\Delta=(CpG_{ONT}-CpG_{WGBS})/CpG_{WGBS}" />
+</p>
+
 
 where \( CpG_{ONT} \) and \( CpG_{WGBS} \) represent the number of CpGs detected by ONT and WGBS, respectively.  
 
