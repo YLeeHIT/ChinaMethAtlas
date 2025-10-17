@@ -34,7 +34,7 @@ Differences in CpG detection between ONT and WGBS were quantified using the foll
 </p>
 
 
-where \( CpG_{ONT} \) and \( CpG_{WGBS} \) represent the number of CpGs detected by ONT and WGBS, respectively.  
+where **CpG<sub>ONT</sub>** and **CpG<sub>WGBS</sub>** represent the number of CpGs detected by ONT and WGBS, respectively.  
 
 ---
 
@@ -43,13 +43,11 @@ where \( CpG_{ONT} \) and \( CpG_{WGBS} \) represent the number of CpGs detected
 Shared CpG sites across individuals were merged using **Bedtools (v2.29)** with the `unionbedg` option, excluding sites with missing values (`NA`).  
 CpGs exhibiting low population differentiation (≤ 0.05) were removed, where differentiation was defined as:
 
+<p align="center">
+    <img src="https://latex.codecogs.com/svg.image?diff(pop_1,pop_2)=\left|\frac{\sum\beta_1}{n}-\frac{\sum\beta_2}{m}\right|" title="diff(pop_1,pop_2)=|Σβ₁/n−Σβ₂/m|" />
+</p>
 
-\[
-diff(pop_1, pop_2) = \left| \frac{\sum \beta_1}{n} - \frac{\sum \beta_2}{m} \right|
-\]
-
-
-Here, \( n \) and \( m \) denote the number of samples in populations 1 and 2, and \( \beta \) represents the methylation level of a CpG site.  
+Here, **n** and **m** denote the number of samples in populations 1 and 2, and **β** represents the methylation level of a CpG site.  
 
 **PCAtools (v2.6.0)** was used to perform principal component analysis after excluding the top 10% of highly similar CpGs.  
 Population differentiation was assessed using **t-tests** (95% confidence interval) based on the first four principal components.  
@@ -61,16 +59,16 @@ To further validate population clustering, **ANOSIM** (Analysis of Similarities)
 CpG methylation levels were annotated to genomic and regulatory features to investigate functional enrichment patterns.  
 The overall methylation level (ML) of a functional element was calculated as:
 
-\[
-ML(i,j) = \frac{\sum \beta}{\sum N_{CpG}}
-\]
+<p align="center">
+    <img src="https://latex.codecogs.com/svg.image?ML(i,j)=\frac{\sum\beta}{\sum N_{CpG}}" title="ML(i,j)=Σβ/ΣN_CpG" />
+</p>
 
-where \( N_{CpG} \) is the number of CpGs within the region, and \( \beta \) represents the methylation level.  
+where **N<sub>CpG</sub>** is the number of CpGs within the region, and **β** represents the methylation level.  
 Methylation density (MD) was computed as:
 
-\[
-MD(i,j) = \frac{\sum N_{CpG}}{j - i}
-\]
+<p align="center">
+    <img src="https://latex.codecogs.com/svg.image?MD(i,j)=\frac{\sum N_{CpG}}{j-i}" title="MD(i,j)=ΣN_CpG/(j−i)" />
+</p>
 
 Annotation files were downloaded from [UCSC Genome Browser](http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database).  
 For features available only in GRCh37, **liftOver** was used to convert coordinates to GRCh38.
