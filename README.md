@@ -1,6 +1,6 @@
 # ChinaMeth: Comprehensive DNA Methylation Analysis for Diverse Population
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.5.0-blue)
 ![Language](https://img.shields.io/badge/language-R-blue)
 ![Language](https://img.shields.io/badge/language-shell-4EAA25)
 ![Language](https://img.shields.io/badge/language-python-blue)
@@ -27,13 +27,13 @@
     - [Example: `DEL/` - Deletion Pipeline](#example-del---deletion-pipeline)
     - [Example: `INS/` - Insertion Pipeline](#example-ins---insertion-pipeline)
     - [Example: `MEG/` - Mobile Element Pipeline](#example-me---mobile-element-pipeline)
-- [Directory Structure](#directory-structure)
+- [Website](#website)
 - [Release](#release)
     - [v1.1 Release Notes](#v11-release-notes)
     - [v1.2 Release Notes](#v12-release-notes)
     - [v1.3 Release Notes](#v13-release-notes)
     - [v1.4 Release Notes](#v14-release-notes)
-- [Website](#website)
+    - [v1.5 Release Notes](#v15-release-notes)
 - [Future Work](#future-work)
 - [License](#license)
 - [Citation](#citation)
@@ -82,12 +82,23 @@ Leveraging the altitude gradient data, we established for the first time **quant
 
 - **Novel Findings for Reference**: ChinaMeth presents a range of unique insights and findings, providing valuable references and hypotheses for future research in epigenetics and population studies.
 
+## Installation
+- **Project Nature**: ChinaMethAtlas is an engineering-oriented GitHub repository, focusing on the organization of data, analysis scripts, and visualization modules rather than a standalone software package.
+  
+- **Python Environment**:  
+    Please use the **latest stable version of Python** (≥ 3.10) to ensure compatibility.  
+    You can create a dedicated environment as follows:
+    ```bash
+    conda create -n chinameth python=3.12
+    conda activate chinameth
+    ```
+
 ## Analysis Workflow
 ChinaMeth provides a comprehensive workflow for DNA methylation data analysis. This workflow encompasses essential analysis scripts for processing methylation data, conducting SV-methylation correlation analyses, and generating visualizations.
 
 ### Methylation workflow
 <div align="center">
-    <img src="images/Meth_workflow.png" alt="Methylation workflow" width="500"/>
+    <img src="images/Meth_workflow.jpg" alt="Methylation workflow" width="500"/>
 </div>
 
 The Methylation analysis pipeline includes the following scripts:
@@ -254,6 +265,10 @@ Importantly, this pipeline will consolidate and formalize the core scripts previ
 - Seamless integration with population-scale SV datasets
 
 ## Release
+
+### v 1.5 Release Notes
+- Added detailed documentation describing the complete analysis workflow
+- Supplemented scripts and data for sDMR, pDMR, and hDMR analyses
 
 ### v1.4 Release Notes
 
