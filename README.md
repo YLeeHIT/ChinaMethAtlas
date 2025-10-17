@@ -1,4 +1,6 @@
-# ChinaMeth: Comprehensive DNA Methylation Analysis for Diverse Population
+<div align="left">
+    <img src="images/ChinaMeth.png" alt="ChinaMeth" width="300"/>
+</div>
 
 ![Version](https://img.shields.io/badge/version-1.5.0-blue)
 ![Language](https://img.shields.io/badge/language-R-blue)
@@ -6,10 +8,6 @@
 ![Language](https://img.shields.io/badge/language-python-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-linux%20|%20macOS-brightgreen)
-
-<div align="left">
-    <img src="images/ChinaMeth.png" alt="ChinaMeth" width="300"/>
-</div>
 
 - [ChinaMeth profile](#chinameth-profile)
 - [Technological advances](#technological-advances)
@@ -78,8 +76,9 @@ Leveraging the altitude gradient data, we established for the first time **quant
 ## Installation
 - **Project Nature**: ChinaMethAtlas is an engineering-oriented GitHub repository, focusing on the organization of data, analysis scripts, and visualization modules rather than a standalone software package.
   We recommend installing only the tools and dependencies you actually need.
-  Note that **Dorado** must be **manually downloaded and installed** from the official Oxford Nanopore Technologies GitHub repository: [https://github.com/nanoporetech/dorado/releases](https://github.com/nanoporetech/dorado/releases).
-- **Python Environment**:  
+  Note that **Dorado** must be manually downloaded and installed from the official Oxford Nanopore Technologies GitHub repository: [https://github.com/nanoporetech/dorado/releases](https://github.com/nanoporetech/dorado/releases).
+
+  - **Python Environment**:  
     Please use the **latest stable version of Python** (≥ 3.10) to ensure compatibility.  
     You can create a dedicated environment as follows:
     ```bash
@@ -108,7 +107,7 @@ This module covers the complete processing of Oxford Nanopore raw signal data in
 - **Methylation Calling**: Detecting CpG methylation signals from aligned reads using **Remora** and **Modkit**.  
 - **Phasing Analysis**: Performing methylation phasing to distinguish allele- or haplotype-specific methylation patterns with **NanoMethPhase**.  
 
-Detailed procedures are documented in [**methylation_detection.md**](Document/Methylation/methylation_detection.md).
+Detailed procedures are documented in [**methylation_detection.md**](Document/methylation_detection/methylation_detection.md).
 
 
 ## Website
