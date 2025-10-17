@@ -16,22 +16,18 @@
 - [Breakgthrough findings](#breakgthrough-findings)
 - [Benefits for Future Researchers](#benefits-for-future-researchers)
 - [Installation](#installation)
-- [Analysis Workflow](#analysis-workflow)
-    - [Methylation workflow](#methylation-workflow)
-    - [Additional Enrichment](#additional-enrichment)
-    - [SV workflow](#sv-workflow)
-    - [DEL workflow](#del-workflow)
-    - [INS workflow](#ins-workflow)
-    - [ME workflow](#me-workflow)
+- [Analysis Modules](#analysis-modules)
+    - [Methylation Detection](#methylation-detection)
+    - [CpG Annotation and Statistics](#cpg-annotation-and-statistics)
+    - [sDMR Analysis](#sdmr-analysis)
+    - [hDMR Analysis](#hdmr-analysis)
+    - [pDMR Analysis](#pdmr-analysis)
+    - [Genetic Variation Effects](#genetic-variation-effects)
+    - [Functional Enrichment Analysis](#functional-enrichment-analysis)
 - [Website](#website)
 - [Future Work](#future-work)
 - [License](#license)
 - [Release](#release)
-    - [v1.1 Release Notes](#v11-release-notes)
-    - [v1.2 Release Notes](#v12-release-notes)
-    - [v1.3 Release Notes](#v13-release-notes)
-    - [v1.4 Release Notes](#v14-release-notes)
-    - [v1.5 Release Notes](#v15-release-notes)
 - [Citation](#citation)
 - [Contact](#contact)
 
@@ -55,6 +51,7 @@ Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns 
 - **The most comprehensive methylation atlas of the Chinese population**: Representing the second phase of the China 100,000 Genomes Project, the cohort involves 106 individuals across diverse geographical regions encompassing a multitude of environmental gradients.
 
 - **A multidimensional analytical framework for cohort methylome**: This integrated framework allows the unified analysis of segmental, haplotype-specific and population-specific differential methylations. Our study reveals epigenetic associations with genomic structural variants (for the first time), genetic imprints and population adaptations.
+
 
 ## Breakgthrough findings
 
@@ -98,64 +95,21 @@ Leveraging the altitude gradient data, we established for the first time **quant
     conda env update -n chinameth -f environment.yml
     ```
 
-## Analysis Workflow
-ChinaMeth provides a comprehensive workflow for DNA methylation data analysis. This workflow encompasses essential analysis scripts for processing methylation data, conducting SV-methylation correlation analyses, and generating visualizations.
 
-### Methylation workflow
-<div align="center">
-    <img src="images/Meth_workflow.jpg" alt="Methylation workflow" width="500"/>
-</div>
+## Analysis Overview
+ChinaMeth provides a comprehensive framework for DNA methylation data analysis, integrating methylation detection, annotation, differential analysis, and functional interpretation.  
+All detailed analysis descriptions can be found in the **Document** directory, and the corresponding analysis scripts are available under the **scripts** folder.
 
-The Methylation analysis pipeline includes the following scripts:
+### Methylation Detection
+This module covers the complete processing of Oxford Nanopore raw signal data into high-confidence methylation profiles, including:
 
-1. **methylation_calling.sh**: Performs DNA basecalling, alignment, and methylation calling.
-2. **methylation_phasing.sh**: Performs phasing and calculates haplotype-specific methylation frequencies.
-3. **hDMR_calculate.sh**: Calculates and filters DMRs and DMCs.
+- **Signal Conversion**: Transforming raw electrical signals (`.pod5` files) into basecalled sequence data using **Dorado**.  
+- **Quality Control**: Filtering out low-quality reads and alignments to ensure accurate methylation detection using **Samtools**.  
+- **Methylation Calling**: Detecting CpG methylation signals from aligned reads using **Remora** and **Modkit**.  
+- **Phasing Analysis**: Performing methylation phasing to distinguish allele- or haplotype-specific methylation patterns with **NanoMethPhase**.  
 
-### SV workflow
-<div align="center">
-    <img src="images/SV_workflow.png" alt="SV worflow" width="400"/>
-</div>
+Detailed procedures are documented in [**methylation_detection.md**](Document/Methylation/methylation_detection.md).
 
-**SV Workflow** is a comprehensive workflow designed for analyzing methylation patterns in structural variants (SVs). The workflow consists of the following three main steps:
-1. **SV Data Preprocessing**: Integrate individual data into a population-level dataset and perform data filtering and quality control. This step ensures data integrity and reliability for downstream analysis.
-2. **SV Methylation Level Analysis**: Perform detailed analysis of methylation patterns in SV regions, with a focus on:
-    - **DEL Workflow**: Analyze methylation patterns in deletion (DEL) regions to explore their distribution and potential functional roles within the genome.
-    - **INS Workflow**: Investigate methylation patterns in insertion (INS) regions to uncover changes in methylation levels during the insertion process.
-3. **Identifying Transpoable Elements**:Examine changes in methylation patterns of insertion (INS) regions as transposable elements (TEs). Using the **MEG Workflow**, this step explores the mechanisms behind methylation dynamics in TEs and their impact on genome stability.
-
-### DEL workflow
-<div align="center">
-    <img src="images/del_pipeline.png" alt="DEL Pipeline" width="600"/>
-</div>
-
-The DEL analysis pipeline includes the following scripts:
-
-1. **sv_sampleFilter.sh**: Filters and standardizes SV data for individual samples. 
-2. **merge_pop.sh**: Merges SV data across populations, then filters and standardizes the merged data. 
-3. **DEL_pop.sh**: Calculates sDMR (significant Differentially Methylated Region) methylation levels for DELs within populations. 
-4. **DEL_plot.R**: Generates scatter and density plots for DEL methylation levels.
-
-### INS workflow
-<div align="center">
-    <img src="images/ins_pipeline.png" alt="INS Pipeline" width="700"/>
-</div>
-
-The INS analysis pipeline includes the following scripts:
-
-1. **extractReadFromINS.py**: Extracts methylation signals and sequences around INS (Insertion) variants. 
-2. **compareSide2kbINS.sh**: Compares methylation levels between INS regions and their upstream/downstream 2kb regions. 
-3. **ins_pop_merge.sh**: Merges individual methylation data files into a population-level file. 
-4. **INS_plot.R**: Generates scatter and density plots for INS methylation levels.
-
-### ME workflow
-<div align="center">
-    <img src="images/INS_reAlign2.png" alt="INS reAlign" width="500"/>
-</div>
-
-1. **reAlign.py**: Identify the source location of INS (insertion) consensus sequences.
-2. **pop_reAlign.py**: Integrate the results into a group format.
-3. **extract_fa.sh**: Annotate the INS with source into MEGs.
 
 ## Website
 
@@ -176,7 +130,7 @@ Importantly, this pipeline will consolidate and formalize the core scripts previ
 
 ## Release
 
-### v 1.5 Release Notes
+### v1.5 Release Notes
 - Added detailed documentation describing the complete analysis workflow
 - Supplemented scripts and data for sDMR, pDMR, and hDMR analyses
 
