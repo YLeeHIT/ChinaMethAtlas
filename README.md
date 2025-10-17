@@ -15,6 +15,7 @@
 - [Technological advances](#technological-advances)
 - [Breakgthrough findings](#breakgthrough-findings)
 - [Benefits for Future Researchers](#benefits-for-future-researchers)
+- [Installation](#installation)
 - [Analysis Workflow](#analysis-workflow)
     - [Methylation workflow](#methylation-workflow)
     - [Additional Enrichment](#additional-enrichment)
@@ -22,20 +23,15 @@
     - [DEL workflow](#del-workflow)
     - [INS workflow](#ins-workflow)
     - [ME workflow](#me-workflow)
-- [Demo & Usage Examples](#demo--usage-examples)
-    - [Folder Overview](#folder-overview)
-    - [Example: `DEL/` - Deletion Pipeline](#example-del---deletion-pipeline)
-    - [Example: `INS/` - Insertion Pipeline](#example-ins---insertion-pipeline)
-    - [Example: `MEG/` - Mobile Element Pipeline](#example-me---mobile-element-pipeline)
 - [Website](#website)
+- [Future Work](#future-work)
+- [License](#license)
 - [Release](#release)
     - [v1.1 Release Notes](#v11-release-notes)
     - [v1.2 Release Notes](#v12-release-notes)
     - [v1.3 Release Notes](#v13-release-notes)
     - [v1.4 Release Notes](#v14-release-notes)
     - [v1.5 Release Notes](#v15-release-notes)
-- [Future Work](#future-work)
-- [License](#license)
 - [Citation](#citation)
 - [Contact](#contact)
 
@@ -84,13 +80,22 @@ Leveraging the altitude gradient data, we established for the first time **quant
 
 ## Installation
 - **Project Nature**: ChinaMethAtlas is an engineering-oriented GitHub repository, focusing on the organization of data, analysis scripts, and visualization modules rather than a standalone software package.
-  
+  We recommend installing only the tools and dependencies you actually need.
+  Note that **Dorado** must be **manually downloaded and installed** from the official Oxford Nanopore Technologies GitHub repository: [https://github.com/nanoporetech/dorado/releases](https://github.com/nanoporetech/dorado/releases).
 - **Python Environment**:  
     Please use the **latest stable version of Python** (≥ 3.10) to ensure compatibility.  
     You can create a dedicated environment as follows:
     ```bash
-    conda create -n chinameth python=3.12
+    ### Clone
+    git clone https://github.com/YLeeHIT/ChinaMethAtlas.git
+    cd ChinaMethAtlas
+    
+    ### create environemnt
+    conda create -n chinameth python=3.12 r-base=4.4
     conda activate chinameth
+
+    ### Optional: install softwares
+    conda env update -n chinameth -f environment.yml
     ```
 
 ## Analysis Workflow
@@ -107,13 +112,6 @@ The Methylation analysis pipeline includes the following scripts:
 2. **methylation_phasing.sh**: Performs phasing and calculates haplotype-specific methylation frequencies.
 3. **hDMR_calculate.sh**: Calculates and filters DMRs and DMCs.
 
-### Additional Enrichment
-
-For users interested in the traditional Guppy + Nanopolish workflow, we provide the following scripts:
-
-- **nanopy.sh**: Executes the traditional Guppy + Nanopolish workflow for basecalling and methylation calling.
-- **calculate_methylation_frequency.py**: Computes methylation frequency based on Nanopolish results.
-
 ### SV workflow
 <div align="center">
     <img src="images/SV_workflow.png" alt="SV worflow" width="400"/>
@@ -122,8 +120,8 @@ For users interested in the traditional Guppy + Nanopolish workflow, we provide 
 **SV Workflow** is a comprehensive workflow designed for analyzing methylation patterns in structural variants (SVs). The workflow consists of the following three main steps:
 1. **SV Data Preprocessing**: Integrate individual data into a population-level dataset and perform data filtering and quality control. This step ensures data integrity and reliability for downstream analysis.
 2. **SV Methylation Level Analysis**: Perform detailed analysis of methylation patterns in SV regions, with a focus on:
-- **DEL Workflow**: Analyze methylation patterns in deletion (DEL) regions to explore their distribution and potential functional roles within the genome.
-- **INS Workflow**: Investigate methylation patterns in insertion (INS) regions to uncover changes in methylation levels during the insertion process.
+    - **DEL Workflow**: Analyze methylation patterns in deletion (DEL) regions to explore their distribution and potential functional roles within the genome.
+    - **INS Workflow**: Investigate methylation patterns in insertion (INS) regions to uncover changes in methylation levels during the insertion process.
 3. **Identifying Transpoable Elements**:Examine changes in methylation patterns of insertion (INS) regions as transposable elements (TEs). Using the **MEG Workflow**, this step explores the mechanisms behind methylation dynamics in TEs and their impact on genome stability.
 
 ### DEL workflow
@@ -158,94 +156,6 @@ The INS analysis pipeline includes the following scripts:
 1. **reAlign.py**: Identify the source location of INS (insertion) consensus sequences.
 2. **pop_reAlign.py**: Integrate the results into a group format.
 3. **extract_fa.sh**: Annotate the INS with source into MEGs.
-
-## Demo & Usage Examples
-
-Each folder in the `scripts/` directory corresponds to a specific pipeline or analysis module. We provide usage demos with input data, expected output, and step-by-step instructions.
-
-### Folder Overview
-
-| Folder | Description | Example Available |
-|--------|-------------|-------------------|
-| `DEL/` | Pipeline for deletion (DEL) events | ✅ |
-| `INS/` | Pipeline for insertion (INS) events | ✅ |
-| `MEG/` | Pipeline for mobile element events | ✅|    
-| `ONT/` | The process from fast5 signal to final bed methylation file | ❌|
-| `Others/` | Miscellaneous scripts and utilities |❌| 
-
----
-
-###  Example: `DEL/` - Deletion Pipeline
-
-**1. Description:**
-
-This pipeline identifies methylation signatures around DEL events and summarizes them by sample and region.
-
-**2. Input files:**
-
-The input VCF file should be **structural variation calls that have been force-called** using tools like `cuteSV`, `Sniffles`, `SVIM`, and `NanoVar`.
-
-**3. Run scripts:**
-
-| Step | Script Path | Command | Description | Input | Output |
-|------|-------------|---------|-------------|--------|--------|
-| 1 | `scripts/DEL/sv_sampleFilter.sh` | `bash ../../scripts/DEL/sv_sampleFilter.sh sam1` | Filter and standardize individual VCF file | `sam1.vcf.gz` | `sam1.Filter.Stand.vcf.gz` |
-| 2 | `scripts/DEL/merge_pop.sh` | `bash ../../scripts/DEL/merge_pop.sh inlist.txt 2 pop` | Merge individual VCFs into a population-level VCF | `inlist.txt` (list of VCFs) | `pop_filtered_DEL_AC2.vcf` |
-| 3 | `scripts/DEL/DEL_pop.sh` | `bash ../../scripts/DEL/DEL_pop.sh pop_filtered_DEL_AC2.vcf pop 0_sam1` | Extract heterozygous deletions (DELs) from population VCF | `pop_filtered_DEL_AC2.vcf` | `pop_0_sam1.cpg` |
-| 4 | `scripts/DEL/DEL_plot.R` |  | Draw scatter plots and density maps of DEL and its flanking regions | Path to the DEL methylation data file (file_path), Threshold for filtering DELs based on methylation difference (cutoff)  | Figures (tiff) |
-
-**4. Expected output:**
-
-The output cpg files include heterozygous deletions and their surrounding methylation context.
-
-###  Example: `INS/` - Insertion Pipeline
-
-**1. Description:**
-
-The INS analysis pipeline focuses on extracting and analyzing DNA methylation signals around insertion (INS) structural variants.
-
-**2. Input files:**
-
-Input files are BAM files processed with Dorado and Remora, containing methylation modification signals.
-
-**3. Run scripts:**
-
-| Step | Script Path | Command | Description | Input | Output |
-|------|-------------|---------|-------------|--------|--------|
-| 1 | `extractReadFromINS.py` | `python ../../scripts/INS/extractReadFromINS.py --bam sam1_chr1_710579.txt --vcf chr1_710579.txt --out ./out` | Extracts methylation signals and sequences around INS variants | Bam file, vcf position file | `sam1.meth` |
-| 2 | `compareSide2kbINS.sh` | `bash compareSide2kbINS.sh sam1` | Compares methylation levels between INS and ±2kb flanking regions | sample ID | `sam1_ins.cpg` |
-| 3 | `ins_pop_merge.sh` | `bash ins_pop_merge.sh pop` | Merges individual methylation files into a population-level file | Population ID | `pop.result` |
-| 4 | `INS_plot.R` |  | Generates scatter and density plots for INS methylation patterns | Path to the data file (file_path), The threshold for filtering out small methylation differences (cutoff) | Figures (tiff) |
-
-**4. Expected output:**
-
-Raw methylation data extracted from INS and flanking regions.
-
-
-###  Example: `MEG/` - Mobile Element Pipeline
-
-**1. Description:**
-
-The MEG analysis builds upon the results from the INS pipeline. It traces the origin of insertion sequences identified in `INS/`, and determines whether these insertions originate from known transposable elements (TEs).
-
-This module includes scripts and example results to illustrate the analysis workflow.
-**Note:** Paths inside the scripts may need to be manually updated based on your environment and file structure.
-
-**2. Input files:**
-
-`sam1_5.cpg`: Methylation file generated from the INS pipeline, representing insertion sequences that contain at least 5 CpG sites.
-
-**3. Run scripts:**
-
-| Step | Script Path | Command | Description | Input | Output |
-|------|-------------|---------|-------------|--------|--------|
-| 1 | `reAlign.py` | `python reAlign.py --sample sam1 --population pop` | Identifies the source location of INS  consensus sequences based on methylation | CpG files | `sam1_reAlign_filter.result` |
-| 2 | `pop_reAlign.py` | `python pop_reAlign.py --population pop` | Merges individual INS analysis results into a single population-level result | Population ID | `pop_reAlign.result` |
-| 3 | `extract_fa.sh` | `bash extract_fa.sh sam1 pop` | Annotates INS (insertion) sequences by aligning them to TEs sequences | Sample ID, Population ID | `sam1_pop_MEGs.txt` |
-
-**4. Expected output:**
-
-- `pop_MEGs.result`: Integrated methylation data across all individuals for mobile element (ME) insertions.
 
 ## Website
 

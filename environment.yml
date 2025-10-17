@@ -1,0 +1,40 @@
+# environment.yml for ChinaMethAtlas
+# This file creates a conda environment with:
+#   - Python runtime for repo scripts
+#   - R 4.4 for downstream analysis and figures
+#   - Core genomics CLI tools (bioconda/conda-forge)
+#   - ONT ecosystem tools where available
+
+name: chinameth
+channels:
+    - conda-forge
+    - bioconda
+    - defaults
+
+dependencies:
+    # --- Runtime ---
+    - python>=3.10        # Use the latest stable Python (>=3.10)
+    - r-base=4.4          # R 4.4.x is required by this project
+    - pip
+
+    # --- Core genomics CLI tools (installable via conda/bioconda) ---
+    - minimap2            # Long-read aligner
+    - samtools            # BAM/CRAM/SAM utilities
+    - bcftools            # VCF/BCF utilities
+    - abpoa               # Partial order alignment (POA)
+    - datamash            # Command-line data summarization
+    - jasmine             # SV comparison/merging
+    - vcftools            # VCF utilities
+    - pod5                # POD5 utilities
+    - Metilene            # DMR detection
+    - nanomethphase       # Methylation phasing
+    - nanostat            # ONT run metrics summary
+    - bedtools          # Genomic interval operations
+
+    # --- Oxford Nanopore ecosystem tools ---
+    - ont-remora          # ONT modification calling refinement
+    - ont-modkit          # ONT methylation post-processing/format conversion
+
+    # Dorado note:
+    # You can download the tools from https://github.com/nanoporetech/dorado.
+
