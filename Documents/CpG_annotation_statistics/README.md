@@ -41,9 +41,11 @@ where \( CpG_{ONT} \) and \( CpG_{WGBS} \) represent the number of CpGs detected
 Shared CpG sites across individuals were merged using **Bedtools (v2.29)** with the `unionbedg` option, excluding sites with missing values (`NA`).  
 CpGs exhibiting low population differentiation (≤ 0.05) were removed, where differentiation was defined as:
 
+
 \[
 diff(pop_1, pop_2) = \left| \frac{\sum \beta_1}{n} - \frac{\sum \beta_2}{m} \right|
 \]
+
 
 Here, \( n \) and \( m \) denote the number of samples in populations 1 and 2, and \( \beta \) represents the methylation level of a CpG site.  
 
@@ -81,6 +83,17 @@ For features available only in GRCh37, **liftOver** was used to convert coordina
 Statistical comparisons between two groups were conducted using the **Wilcoxon rank-sum test** (p < 0.05)
 
 For multiple groups, the **Kruskal–Wallis test** was applied to evaluate differences among independent populations.
+
+---
+
+### Summary of Scripts
+
+| Script Name | Purpose / Function | Notes |
+|--------------|-------------------|-------|
+| `cpg_merge.sh` | Merges CpG sites across individuals using Bedtools `unionbedg`. | Input: methylation files from multiple samples. |
+| `pca_analysis.R` | Performs PCA and visualizes principal components using PCAtools. | Output: PCA plots and variance explained by components. |
+| `anosim_test.R` | Conducts ANOSIM clustering validation using Vegan with Bray–Curtis distance. | Evaluates population-level methylation similarity. |
+| `filter_lowdiff_cpg.py` | Filters CpG sites with low differentiation (≤ 0.05) between populations. | Ensures CpGs with stable methylation are excluded. |
 
 ---
 
