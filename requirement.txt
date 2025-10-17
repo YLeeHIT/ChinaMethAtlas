@@ -1,10 +1,14 @@
 pod5
 dorado
-remora
-modkit
+ont-remora
+ont-modkit
 jasmine
 minimap2
 samtools
 bcftools
 abpoa
 datamash
+Metilene
+nanomethphase
+nanostat
+

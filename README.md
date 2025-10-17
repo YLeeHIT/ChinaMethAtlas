@@ -29,26 +29,20 @@
 - [Contact](#contact)
 
 ## ChinaMeth profile
-
 <div align="center">
     <img src="images/chinameth.jpg" alt="ChinaMeth" width="900"/>
 </div>
 
-Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns of DNA methylation across diverse Chinese populations using nanopore sequencing technologies. This repository provides insights into our comprehensive study of methylation dynamics and their role in genetic regulation and environmental adaptation. It also includes scripts for data processing and visulization to facilitate methylation studies.
+- Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns of DNA methylation across diverse Chinese populations using nanopore sequencing technologies. This repository provides insights into our comprehensive study of methylation dynamics and their role in genetic regulation and environmental adaptation. It also includes scripts for data processing and visulization to facilitate methylation studies.
 
 ## Stuy Overview
-
-
 <div align="center">
     <img src="images/study.jpg" alt="study" width="900"/>
 </div>
 
-Earlier population-scale DNA methylation studies primarily relied on **array-based** or **bisulfite sequencing** technologies, which, although informative, provided only a **partial and biased view** of the methylome. These methods were constrained by short-read lengths, limited CpG site coverage, and the inability to resolve **haplotype- or allele-specific methylation**. Moreover, most previous datasets lacked integration with **genomic structural variants (SVs)** and **environmental parameters**, limiting the exploration of how genetic and environmental factors jointly shape epigenetic diversity.
+- Earlier population-scale DNA methylation studies primarily relied on **array-based** or **bisulfite sequencing** technologies, which, although informative, provided only a **partial and biased view** of the methylome. These methods were constrained by short-read lengths, limited CpG site coverage, and the inability to resolve **haplotype- or allele-specific methylation**. Moreover, most previous datasets lacked integration with **genomic structural variants (SVs)** and **environmental parameters**, limiting the exploration of how genetic and environmental factors jointly shape epigenetic diversity.
 
-In contrast, **ChinaMeth** leverages **Oxford Nanopore long-read sequencing** to achieve **base-resolution and haplotype-resolved DNA methylation profiling** across large, geographically diverse human populations. This strategy enables the simultaneous detection of **genetic variants**, **structural variations**, and **methylation modifications** within the same individuals, offering a **complete and unbiased methylome representation**.  
-By coupling long-range methylation information with population and environmental metadata, ChinaMeth provides a powerful framework for dissecting **genetic–epigenetic–environmental interactions** that underpin population-level phenotypic diversity.
-
-
+- In contrast, **ChinaMeth** leverages **Oxford Nanopore long-read sequencing** to achieve **base-resolution and haplotype-resolved DNA methylation profiling** across large, geographically diverse human populations. This strategy enables the simultaneous detection of **genetic variants**, **structural variations**, and **methylation modifications** within the same individuals, offering a **complete and unbiased methylome representation**. By coupling long-range methylation information with population and environmental metadata, ChinaMeth provides a powerful framework for dissecting **genetic–epigenetic–environmental interactions** that underpin population-level phenotypic diversity.
 
 ## Technological advances
 
@@ -90,22 +84,21 @@ Leveraging the altitude gradient data, we established for the first time **quant
   We recommend installing only the tools and dependencies you actually need.
   Note that **Dorado** must be manually downloaded and installed from the official Oxford Nanopore Technologies GitHub repository: [https://github.com/nanoporetech/dorado/releases](https://github.com/nanoporetech/dorado/releases).
 
-  - **Python Environment**:  
-    Please use the **latest stable version of Python** (≥ 3.10) to ensure compatibility.  
-    You can create a dedicated environment as follows:
-    ```bash
-    ### Clone
-    git clone https://github.com/YLeeHIT/ChinaMethAtlas.git
-    cd ChinaMethAtlas
+- **Python Environment**:  
+  Please use the **latest stable version of Python** (≥ 3.10) to ensure compatibility.  
+  You can create a dedicated environment as follows:
+  ```bash
+  ### Clone
+  git clone https://github.com/YLeeHIT/ChinaMethAtlas.git
+  cd ChinaMethAtlas
     
-    ### create environemnt
-    conda create -n chinameth python=3.12 r-base=4.4
-    conda activate chinameth
+  ### create environemnt
+  conda create -n chinameth python=3.12 r-base=4.4
+  conda activate chinameth
 
-    ### Optional: install softwares
-    conda env update -n chinameth -f environment.yml
-    ```
-
+  ### Optional: install softwares
+  conda env update -n chinameth -f environment.yml
+  ```
 
 ## Analysis Overview
 ChinaMeth provides a comprehensive framework for DNA methylation data analysis, integrating methylation detection, annotation, differential analysis, and functional interpretation.  
