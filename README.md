@@ -106,6 +106,7 @@ Leveraging the altitude gradient data, we established for the first time **quant
 ChinaMeth provides a comprehensive framework for DNA methylation data analysis, integrating methylation detection, annotation, differential analysis, and functional interpretation.  
 All detailed analysis descriptions can be found in the **Documents** directory, and the corresponding analysis scripts are available under the **scripts** folder.
 
+
 ### Methylation Detection
 This module covers the complete processing of Oxford Nanopore raw signal data into high-confidence methylation profiles, including:
 
@@ -114,7 +115,8 @@ This module covers the complete processing of Oxford Nanopore raw signal data in
 - **Methylation Calling**: Detecting CpG methylation signals from aligned reads using **Remora** and **Modkit**.  
 - **Phasing Analysis**: Performing methylation phasing to distinguish allele- or haplotype-specific methylation patterns with **NanoMethPhase**.  
 
-Detailed procedures are documented in [methylation detection](Documents/methylation_detection/README.md).
+Detailed procedures are documented in [**methylation detection**](Documents/methylation_detection/README.md).
+
 
 ### CpG Annotation and Statistics
 This module focuses on the genome-wide characterization and comparative analysis of CpG methylation across individuals and populations, providing an integrated framework for evaluating data quality, coverage, and functional enrichment.
@@ -124,7 +126,33 @@ This module focuses on the genome-wide characterization and comparative analysis
 - **Principal Component Analysis**: Performing population-level clustering and similarity assessment using **PCAtools** and **Vegan** packages.  
 - **Functional Annotation**: Annotating CpGs across genomic, regulatory, and repeat regions (e.g., genes, histone marks, CpG islands) and evaluating methylation patterns with **Wilcoxon** and **Kruskal–Wallis** tests.  
 
-Detailed procedures are documented in [CpG annotation and statistics](Documents/CpG_annotation_statistics/README.md).
+Detailed procedures are documented in [**CpG annotation and statistics**](Documents/CpG_annotation_statistics/README.md).
+
+
+### Segmental Differentially Methylated Regions (sDMR)
+
+This module focuses on the identification and analysis of **segmental differentially methylated regions (sDMRs)** associated with structural variants (SVs).  
+It provides tools for methylation normalization, classification, compensation effect estimation, and transposable element annotation.
+
+- **sDMR Detection**: Calculates methylation levels of SV bodies and their ±2 kb flanking regions, normalizes methylation values, and classifies regions as High, Low, or Other using Δ<sub>sDMR</sub> > 0.5 as the significance threshold.  
+- **SV-Associated Methylation Analysis**: Quantifies methylation across genomic intervals (10 bp–1 kb) and extracts methylation signals from INS/DEL/DUP/INV regions using **abPOA**, **Samtools**, and **Modkit**.  
+- **Compensation Fold Calculation**: Computes methylation compensation effects in heterozygous DELs and visualizes fold changes across length bins.  
+- **Transposable Element Identification**: Aligns INS consensus sequences to the genome using **minimap2** and annotates mobile element classes (SINE, LINE, LTR) based on **rMETL** consensus data.
+
+Detailed procedures are documented in [**sDMR analysis**](Documents/sDMR/sDMR_analysis.md).
+
+
+### Haplotype-based Differentially Methylated Regions (hDMR)
+
+This module focuses on detecting and characterizing **haplotype-based differentially methylated regions (hDMRs)** to explore allele-specific methylation and imprinting regulation.  
+It integrates haplotype-level methylation analysis, region merging, and imprinting gene annotation.
+
+- **hDMR Detection**: Identifies differential methylation between haplotypes using **Metilene** based on phased methylation data from **NanoMethPhase**.  
+- **Union and Annotation**: Merges overlapping hDMRs across individuals and defines potential imprinting control regions (ICRs) within gene and promoter regions.  
+- **Imprinting Gene Classification**: Annotates known and candidate imprinting genes by integrating results with the **GENEIMPRINT** database.
+
+Detailed procedures are documented in [**hDMR analysis**](Documents/hDMR/hDMR_analysis.md).
+
 
 
 ## Website

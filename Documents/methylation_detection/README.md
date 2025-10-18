@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="../../images/Meth_workflow.jpg" alt="Methylation workflow" width="500"/>
+    <img src="../../images/Meth_workflow.jpg" alt="Methylation workflow" width="800"/>
 </div>
 
 ### Methylation Workflow

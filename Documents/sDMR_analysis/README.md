@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="../../images/SV_workflow.png" alt="SV worflow" width="400"/>
+    <img src="../../images/SV_workflow.png" alt="SV worflow" width="800"/>
 </div>
 
 ### Segmental Differentially Methylated Region (sDMR) Analysis
