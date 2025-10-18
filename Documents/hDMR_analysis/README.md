@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="../../images/hDMRs.jpg" alt="hDMR analysis" width="500"/>
+    <img src="../../images/hDMRs.jpg" alt="hDMR analysis" width="800"/>
 </div>
 
 

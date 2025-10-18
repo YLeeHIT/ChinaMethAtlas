@@ -19,11 +19,10 @@
 - [Analysis](#analysis)
     - [Methylation Detection](#methylation-detection)
     - [CpG Annotation and Statistics](#cpg-annotation-and-statistics)
-    - [sDMR Analysis](#sdmr-analysis)
-    - [hDMR Analysis](#hdmr-analysis)
-    - [pDMR Analysis](#pdmr-analysis)
+    - [sDMR Analysis](#segmental-differentially-methylated-regions-sdmr)
+    - [hDMR Analysis](#haplotype-based-differentially-methylated-regions-hdmr)
+    - [pDMR Analysis](#population-based-differentially-methylated-regions-pdmr)
     - [Genetic Variation Effects](#genetic-variation-effects)
-    - [Functional Enrichment Analysis](#functional-enrichment-analysis)
 - [Website](#website)
 - [License](#license)
 - [Release](#release)
@@ -152,6 +151,30 @@ It integrates haplotype-level methylation analysis, region merging, and imprinti
 - **Imprinting Gene Classification**: Annotates known and candidate imprinting genes by integrating results with the **GENEIMPRINT** database.
 
 Detailed procedures are documented in [**hDMR analysis**](Documents/hDMR/hDMR_analysis.md).
+
+
+### Population-specific Differentially Methylated Regions (pDMR)
+
+This module identifies **population-specific differentially methylated regions (pDMRs)** and **differentially methylated genes (DMGs)** to explore epigenetic divergence and altitude adaptation among populations.  
+It integrates DMR detection, gene annotation, and environmental association analysis.
+
+- **pDMR Detection**: Detects population-level methylation differences among **North**, **South**, and **Xizang** populations using **Metilene**, followed by visualization with **TBtools**.  
+- **DMG Identification**: Defines DMGs by mapping DMRs to gene and regulatory regions, visualized using **ComplexHeatmap**.  
+- **Functional Analysis**: Performs **GO/KEGG** enrichment with **Metascape** and **Cytoscape**, and evaluates altitude–methylation associations using logistic regression models.  
+
+Detailed procedures are documented in [**pDMR analysis**](Documents/pDMR/pDMR_analysis.md).
+
+
+### Genetic Variation Effects on DNA Methylation
+
+This module integrates **genetic variation (SNVs)** and **meQTL** information to evaluate the potential genetic contribution to methylation differences observed in **pDMRs** and **hDMRs**.  
+It combines population genomic data with public meQTL resources to assess possible genetic–epigenetic interactions.
+
+- **SNV Filtering**: Extracts high-confidence SNVs from the **China 100K Genome Project** based on **MAF**, **HWE**, and allele frequency differences.  
+- **meQTL Annotation**: Annotates CpG–SNV associations using the **GoDMC** database to identify potential genetic regulation within DMRs.  
+- **DMR Screening**: Flags DMRs containing >10% meQTL-associated CpGs and maps affected regions to genes for further analysis.  
+
+Detailed procedures are documented in [**genetic variation effects**](Documents/genetic_variation_effects/README.md).
 
 
 
