@@ -25,7 +25,6 @@ reference="hg38.fa"  # Reference genome file
 ont_model="ont_model"  # ONT model file
 platform="ont"
 threads=16
-deep_threshold=0.6  # Threshold for deepsignal methylation calls
 
 # Step 1: Phasing BAM and generating phased VCF using Clair3
 echo "Starting Step 1: Phasing BAM and generating phased VCF..."
@@ -49,7 +48,7 @@ echo "Step 2.1: DeepSignal-compatible file created."
 # Step 2.2 Pretreatment of methylation calling for phasing
 echo "Starting Step 2.2: Preprocessing methylation calls for phasing..."
 bed_file="${sampleID}.bed.gz"
-python ${nanomethphase} methyl_call_processor -mc ${deep_format} -tc deepsignal:${deep_threshold} -t ${threads} \
+python ${nanomethphase} methyl_call_processor -mc ${deep_format} -t ${threads} \
         | sort -k1,1 -k2,2n -k3,3n \
         | bgzip > ${bed_file} && tabix -p bed ${bed_file}
 echo "Step 2.2: Methylation call preprocessing completed."

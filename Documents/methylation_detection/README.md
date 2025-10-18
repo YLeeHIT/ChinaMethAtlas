@@ -65,6 +65,58 @@ This method follows the earlier Oxford Nanopore analysis scheme and remains comp
 
 ---
 
+### EPI2ME Labs Workflow
+
+EPI2ME Labs provides **Nextflow-based** pipelines that integrate **methylation detection**, **variant calling**, and **phasing** within a unified framework for Oxford Nanopore data.  
+These workflows support both CPU and GPU environments and are compatible with **Singularity**, **Docker**, or **Conda** profiles.
+
+---
+
+#### 1) Methylation Detection — `wf-methylation`
+
+This workflow performs end-to-end methylation analysis, including basecalling, modified-base detection, and methylation summarization.
+
+<p align="center">
+    <img src="https://latex.codecogs.com/png.image?Input:POD5/FAST5%20%2B%20Reference%20FASTA" alt="Input: POD5 + Reference FASTA" />
+</p>
+
+**Example Command:**
+
+```bash
+nextflow run epi2melabs/wf-methylation -profile docker \
+    --input fastq/ \                         # or --pod5 pod5/
+    --reference ref/hg38.fa \
+    --basecaller dorado \
+    --dorado_model dna_r9.4.1_e8_hac@v3.3 \
+    --device cuda:all \                      # enable GPU (use cpu for CPU-only)
+    --modbam \                               # export modBAM file
+    --bedmethyl \                            # export bedMethyl table
+    --outdir out/methylation
+```
+
+### 2) Variant Calling and Phasing — `wf-human-variation`
+
+This pipeline identifies SNVs, Indels, and SVs, and optionally performs haplotype phasing.
+
+<p align="center"> 
+    <img src="https://latex.codecogs.com/png.image?Input:FASTQ%20%2B%20Reference%20FASTA" alt="Input: FASTQ + Reference FASTA" /> 
+</p>
+
+**Example Command:**
+
+```bash
+nextflow run epi2melabs/wf-human-variation -profile docker \
+    --input fastq/ \
+    --reference ref/hg38.fa \
+    --call_small_variants \                  # Clair3 for SNVs/Indels
+    --call_structural_variants \             # Sniffles/SVIM for SVs
+    --phase \                                # enable phasing
+    --threads 32 \
+    --outdir out/human_variation
+```
+
+
+
 ### Summary of Scripts
 
 | Script Name | Purpose / Function | Notes |
@@ -74,17 +126,8 @@ This method follows the earlier Oxford Nanopore analysis scheme and remains comp
 | `hDMR_calculate.sh` | Identifies and filters haplotype-specific DMRs (hDMRs) using Metilene. | Input: phased methylation data. |
 | `nanopy.sh` | Runs the Guppy + Nanopolish pipeline for basecalling and methylation calling. | Optional legacy workflow. |
 | `calculate_methylation_frequency.py` | Calculates methylation frequencies from Nanopolish results. | Output: site-level methylation ratios. |
-| `variant_calling.sh` | Detects SNVs and SVs (cuteSV, Sniffles, SVIM, NanoVar). | Used for downstream methylation phasing. |
 | `filter_methylation_data.py` | Filters CpG sites based on coverage and mapping quality. | Ensures high-confidence methylation data. |
-| `merge_phased_data.sh` | Merges haplotype-resolved methylation data across individuals. | Optional step for population-scale analysis. |
 
 > **Note:**
 > Each script must be configured according to the **user’s dataset paths, reference genome, and parameter settings** before execution.  
-> Example usage templates and command-line examples are provided within the `scripts/methylation_detection` directory.
-
-
-
-
-
-
 

@@ -7,13 +7,14 @@
 <div align="left">
     <img src="images/ChinaMeth.png" alt="logo" width="300"/>
 </div>
+---
 
 - [ChinaMeth profile](#chinameth-profile)
 - [Technological advances](#technological-advances)
 - [Breakgthrough findings](#breakgthrough-findings)
 - [Benefits for Future Researchers](#benefits-for-future-researchers)
 - [Installation](#installation)
-- [Analysis Modules](#analysis-modules)
+- [Analysis](#analysis)
     - [Methylation Detection](#methylation-detection)
     - [CpG Annotation and Statistics](#cpg-annotation-and-statistics)
     - [sDMR Analysis](#sdmr-analysis)
@@ -22,7 +23,6 @@
     - [Genetic Variation Effects](#genetic-variation-effects)
     - [Functional Enrichment Analysis](#functional-enrichment-analysis)
 - [Website](#website)
-- [Future Work](#future-work)
 - [License](#license)
 - [Release](#release)
 - [Citation](#citation)
@@ -35,7 +35,7 @@
 
 - Welcome to **ChinaMeth**, a project dedicated to exploring the complex patterns of DNA methylation across diverse Chinese populations using nanopore sequencing technologies. This repository provides insights into our comprehensive study of methylation dynamics and their role in genetic regulation and environmental adaptation. It also includes scripts for data processing and visulization to facilitate methylation studies.
 
-## Stuy Overview
+## Study Overview
 <div align="center">
     <img src="images/study.jpg" alt="study" width="900"/>
 </div>
@@ -100,7 +100,7 @@ Leveraging the altitude gradient data, we established for the first time **quant
   conda env update -n chinameth -f environment.yml
   ```
 
-## Analysis Overview
+## Analysis
 ChinaMeth provides a comprehensive framework for DNA methylation data analysis, integrating methylation detection, annotation, differential analysis, and functional interpretation.  
 All detailed analysis descriptions can be found in the **Documents** directory, and the corresponding analysis scripts are available under the **scripts** folder.
 
@@ -128,19 +128,6 @@ Detailed procedures are documented in [CpG annotation and statistics](Documents/
 ## Website
 
 Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR, on our interctive [ChinaMeth](http://bioinformatics.hit.edu.cn/chinaMeth/#/).
-
-## Future Work
-
-To enhance the reproducibility and scope of structural variant (SV)-associated methylation analysis, we are developing `methSV`, a modular and fully executable Nextflow pipeline.
-
-This upcoming workflow will address a key limitation in the current Oxford Nanopore EPI2ME platform: the lack of SV-aware methylation signal extraction and joint analysis. By integrating SV annotations (e.g., from Sniffles) with modified base information (e.g., from Remora-annotated modBAM files), `methSV` will allow users to extract, quantify, and visualize DNA methylation patterns across SV regions, including insertions (INS), deletions (DEL), and mobile element insertions (MEG).
-
-Importantly, this pipeline will consolidate and formalize the core scripts previously developed within this repository, including those used for DEL, INS, and MEG-specific methylation analyses. These scripts will be encapsulated into a unified, scalable framework based on Nextflow, enabling:
-
-- Region-based methylation extraction from SV-overlapping modBAM files
-- Automated, parallelizable execution on local or cloud infrastructure
-- Easy customization and reproducibility across studies
-- Seamless integration with population-scale SV datasets
 
 ## Release
 
