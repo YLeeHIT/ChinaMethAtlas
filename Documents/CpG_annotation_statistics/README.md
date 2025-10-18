@@ -1,8 +1,6 @@
 ### CpG Annotation and Statistics
 
-This module focuses on the genome-wide characterization and comparative analysis of CpG methylation profiles across individuals and populations.  
-It includes sequencing quality assessment, comparative evaluation with WGBS datasets, principal component analysis, and functional annotation of CpG sites.  
-All relevant scripts are located in the `scripts/cpg_annotation/` directory, and detailed workflows are provided in [**Document/CpG/cpg_annotation.md**](Document/CpG/cpg_annotation.md).
+This module focuses on the genome-wide characterization and comparative analysis of CpG methylation profiles across individuals and populations. It includes sequencing quality assessment, comparative evaluation with WGBS datasets, principal component analysis, and functional annotation of CpG sites.  
 
 ---
 
@@ -11,8 +9,6 @@ All relevant scripts are located in the `scripts/cpg_annotation/` directory, and
 Raw signal files (**POD5**) were basecalled to FASTQ using **Dorado (v0.3.1)** with the `dna_r9.4.1_e8_hac` model.  
 Sequencing metrics such as **read-length N50**, **mean Q-score**, and **predicted error rate** (calculated as *10^(-Q/10)*) were summarized using **NanoStat (v1.6.0)**.  
 Per-sample coverage was computed with **Samtools (v1.9)** using the `depth` function, and cohort-level metrics were represented as arithmetic means of individual values.  
-
-To assess data consistency, Pearson correlation coefficients were calculated between methylation levels at overlapping CpG sites across individuals.  
 A **LOESS** (locally weighted scatterplot smoothing) regression was applied to model the relationship between sequencing coverage and the number of detected CpG sites per sample, revealing saturation trends in CpG detection with increasing coverage.
 
 ---
@@ -49,9 +45,7 @@ CpGs exhibiting low population differentiation (≤ 0.05) were removed, where di
 
 Here, **n** and **m** denote the number of samples in populations 1 and 2, and **β** represents the methylation level of a CpG site.  
 
-**PCAtools (v2.6.0)** was used to perform principal component analysis after excluding the top 10% of highly similar CpGs.  
-Population differentiation was assessed using **t-tests** (95% confidence interval) based on the first four principal components.  
-To further validate population clustering, **ANOSIM** (Analysis of Similarities) was conducted with the **Vegan (v2.6.4)** R package using the **Bray–Curtis** distance metric (`vegdist` function).
+**PCAtools (v2.6.0)** was used to perform principal component analysis after excluding the top 10% of highly similar CpGs. Population differentiation was assessed using **t-tests** (95% confidence interval) based on the first four principal components. To further validate population clustering, **ANOSIM** (Analysis of Similarities) was conducted with the **Vegan (v2.6.4)** R package using the **Bray–Curtis** distance metric (`vegdist` function).
 
 ---
 #### Functional Annotation
@@ -98,5 +92,4 @@ For multiple groups, the **Kruskal–Wallis test** was applied to evaluate diffe
 ---
 
 #### Notes
-- All parameters can be customized in the corresponding shell or R scripts under the `scripts/cpg_annotation/` directory.  
 - Users should modify input file paths and reference genome versions according to their datasets before running the analysis.
