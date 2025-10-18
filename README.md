@@ -4,9 +4,11 @@
 ![Language](https://img.shields.io/badge/language-python-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-linux%20|%20macOS-brightgreen)
+
 <div align="left">
     <img src="images/ChinaMeth.png" alt="logo" width="300"/>
 </div>
+
 ---
 
 - [ChinaMeth profile](#chinameth-profile)

@@ -1,7 +1,10 @@
+<div align="center">
+    <img src="images/SV_workflow.png" alt="SV worflow" width="400"/>
+</div>
+
 ### Segmental Differentially Methylated Region (sDMR) Analysis
 
 This module provides the complete workflow for identifying and analyzing **segmental differentially methylated regions (sDMRs)** associated with structural variants (SVs), including methylation normalization, classification, compensation effect estimation, and transposable element identification.  
-All corresponding scripts are located in `scripts/sDMR_analysis/`, and detailed procedures are documented in [**Document/sDMR/sDMR_analysis.md**](Documents/sDMR/sDMR_analysis.md).
 
 ---
 
@@ -47,6 +50,30 @@ The mean methylation value per interval was calculated, and background methylati
 - For **INS**, methylation signals were re-extracted from the **modBAM** file within a 100 bp window around the insertion site. Variants with **supporting read depth (DV) < 3** were removed.  
   The retained INS regions were extended ±20 bp, and consensus sequences were generated using **abPOA (v1.5.1)**. CpGs with depth ≥ 3 were aligned to the consensus and averaged to estimate methylation levels.
 
+#### DEL workflow
+<div align="center">
+    <img src="images/del_pipeline.png" alt="DEL Pipeline" width="600"/>
+</div>
+
+The DEL analysis pipeline includes the following scripts:
+
+1. **sv_sampleFilter.sh**: Filters and standardizes SV data for individual samples. 
+2. **merge_pop.sh**: Merges SV data across populations, then filters and standardizes the merged data. 
+3. **DEL_pop.sh**: Calculates sDMR (significant Differentially Methylated Region) methylation levels for DELs within populations. 
+4. **DEL_plot.R**: Generates scatter and density plots for DEL methylation levels.
+
+#### INS workflow
+<div align="center">
+    <img src="images/ins_pipeline.png" alt="INS Pipeline" width="700"/>
+</div>
+
+The INS analysis pipeline includes the following scripts:
+
+1. **extractReadFromINS.py**: Extracts methylation signals and sequences around INS (Insertion) variants. 
+2. **compareSide2kbINS.sh**: Compares methylation levels between INS regions and their upstream/downstream 2kb regions. 
+3. **ins_pop_merge.sh**: Merges individual methylation data files into a population-level file. 
+4. **INS_plot.R**: Generates scatter and density plots for INS methylation levels.
+
 ---
 
 #### 3. Calculation of the Compensatory Fold
@@ -81,20 +108,16 @@ INS and DEL variants with a **population frequency > 50%** in any group were ret
 
 INS elements were aligned to **ALU**, **L1**, and **SVA** reference sequences (quality ≥ 20) using consensus data from **rMETL (v1.0.4)**, and annotated with respect to **SINE**, **LINE**, and **LTR** categories.
 
+### ME workflow
+<div align="center">
+    <img src="images/INS_reAlign2.png" alt="INS reAlign" width="500"/>
+</div>
+
+1. **reAlign.py**: Identify the source location of INS (insertion) consensus sequences.
+2. **pop_reAlign.py**: Integrate the results into a group format.
+3. **extract_fa.sh**: Annotate the INS with source into MEGs.
+
 ---
-
-
-#### Summary of Scripts
-
-| Script Name | Function | Description |
-|--------------|-----------|-------------|
-| `merge_SV.sh` | Merge SV calls with Jasmine | Combines all individuals into a unified SV dataset |
-| `calculate_methylation_sDMR.py` | Compute methylation values of variant body and flanking regions | Calculates segmental mean methylation per sample |
-| `normalize_sDMR.py` | Normalize segmental methylation | Computes Meth<sub>nor</sub> based on local flanking methylation |
-| `classify_sDMR.py` | Classify sDMRs (High / Low / Other) | Uses Δ<sub>sDMR</sub> > 0.5 threshold for significance |
-| `compensation_fold.R` | Calculate compensatory fold | Visualizes DEL compensation effect |
-| `INS_consensus_abPOA.sh` | Generate INS consensus sequence | Runs abPOA for re-alignment and methylation extraction |
-| `TE_annotation.sh` | Annotate INS/DEL with repeat elements | Classifies cut-and-paste vs copy-and-paste events |
 
 > **Note:**  
 > Before running, ensure that all input file paths, reference genomes, and population labels are correctly configured in the corresponding scripts.
