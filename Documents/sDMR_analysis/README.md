@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="images/SV_workflow.png" alt="SV worflow" width="400"/>
+    <img src="../../images/SV_workflow.png" alt="SV worflow" width="400"/>
 </div>
 
 ### Segmental Differentially Methylated Region (sDMR) Analysis
@@ -52,7 +52,7 @@ The mean methylation value per interval was calculated, and background methylati
 
 #### DEL workflow
 <div align="center">
-    <img src="images/del_pipeline.png" alt="DEL Pipeline" width="600"/>
+    <img src="../../images/del_pipeline.png" alt="DEL Pipeline" width="600"/>
 </div>
 
 The DEL analysis pipeline includes the following scripts:
@@ -64,7 +64,7 @@ The DEL analysis pipeline includes the following scripts:
 
 #### INS workflow
 <div align="center">
-    <img src="images/ins_pipeline.png" alt="INS Pipeline" width="700"/>
+    <img src="../../images/ins_pipeline.png" alt="INS Pipeline" width="700"/>
 </div>
 
 The INS analysis pipeline includes the following scripts:
@@ -110,7 +110,7 @@ INS elements were aligned to **ALU**, **L1**, and **SVA** reference sequences (q
 
 ### ME workflow
 <div align="center">
-    <img src="images/INS_reAlign2.png" alt="INS reAlign" width="500"/>
+    <img src="../../images/INS_reAlign2.png" alt="INS reAlign" width="500"/>
 </div>
 
 1. **reAlign.py**: Identify the source location of INS (insertion) consensus sequences.

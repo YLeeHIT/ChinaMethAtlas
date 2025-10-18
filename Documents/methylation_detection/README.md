@@ -1,8 +1,8 @@
-### Methylation Workflow
 <div align="center">
     <img src="../../images/Meth_workflow.jpg" alt="Methylation workflow" width="500"/>
 </div>
 
+### Methylation Workflow
 ChinaMeth provides a complete workflow for DNA methylation analysis based on Oxford Nanopore sequencing data.  
 This section summarizes the experimental preparation, signal processing, methylation detection, and haplotype phasing procedures.
 
