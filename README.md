@@ -22,7 +22,7 @@
     - [sDMR Analysis](#segmental-differentially-methylated-regions-sdmr)
     - [hDMR Analysis](#haplotype-based-differentially-methylated-regions-hdmr)
     - [pDMR Analysis](#population-based-differentially-methylated-regions-pdmr)
-    - [Genetic Variation Effects](#genetic-variation-effects)
+    - [Genetic Variation Effects](#genetic-variation-effects-on-dna-methylation)
 - [Website](#website)
 - [License](#license)
 - [Release](#release)

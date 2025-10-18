@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="../../images/meQTL.jpg" alt="snv effects" width="800"/>
+  <img src="../../images/meQTL_pipeline.jpg" alt="snv effects" width="800"/>
 </div>
 
 ### Genetic Variation Effects on DNA Methylation
