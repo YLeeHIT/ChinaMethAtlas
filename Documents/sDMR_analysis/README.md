@@ -110,7 +110,7 @@ INS elements were aligned to **ALU**, **L1**, and **SVA** reference sequences (q
 
 ### ME workflow
 <div align="center">
-    <img src="../../images/INS_reAlign2.png" alt="INS reAlign" width="500"/>
+    <img src="../../images/INS_reAlign.png" alt="INS reAlign" width="500"/>
 </div>
 
 1. **reAlign.py**: Identify the source location of INS (insertion) consensus sequences.
