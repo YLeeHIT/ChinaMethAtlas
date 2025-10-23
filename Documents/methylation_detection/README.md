@@ -123,11 +123,12 @@ nextflow run epi2melabs/wf-human-variation -profile docker \
 |--------------|-------------------|-------|
 | `methylation_calling.sh` | Performs basecalling, alignment, and methylation calling using Dorado + Remora + Modkit. | Requires raw POD5 files and reference genome. |
 | `methylation_phasing.sh` | Conducts variant calling and haplotype phasing for methylation data. | Uses Clair3, WhatsHap, and NanoMethPhase. |
-| `hDMR_calculate.sh` | Identifies and filters haplotype-specific DMRs (hDMRs) using Metilene. | Input: phased methylation data. |
+| `methylation_calculate_frequency.sh` | Filters out low-quality noise from methylation calls and calculates the methylation frequency for each CpG site. | Filters reads with MAPQ ≥ 5, CpG depth > 1/3 of total depth, and removes hDMR regions. |
+| `snv_calling.sh` | Performs SNV detection using Clair3 (ONT mode) and filters high-quality variants on autosomes. | Use run_clair3.sh with the ont_guppy2 model for ONT SNV calling.  |
+| `sv_calling.sh` | Detects structural variants using multiple callers and merges high-confidence results. | Uses cuteSV, Sniffles, SVIM, NanoVar. |
 | `nanopy.sh` | Runs the Guppy + Nanopolish pipeline for basecalling and methylation calling. | Optional legacy workflow. |
 | `calculate_methylation_frequency.py` | Calculates methylation frequencies from Nanopolish results. | Output: site-level methylation ratios. |
-| `filter_methylation_data.py` | Filters CpG sites based on coverage and mapping quality. | Ensures high-confidence methylation data. |
 
 > **Note:**
 > Each script must be configured according to the **user’s dataset paths, reference genome, and parameter settings** before execution.  
-
+> For detailed script execution, see [**cpg_snv_sv**](../../scripts/cpg_snv_sv)
