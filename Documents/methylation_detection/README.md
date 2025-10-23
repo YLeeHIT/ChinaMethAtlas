@@ -57,7 +57,7 @@ This method follows the earlier Oxford Nanopore analysis scheme and remains comp
 2. **Alignment**  
    Sequence reads were aligned to the human reference genome (**GRCh38**) using **Minimap2 (v2.26)** with the `-ax map-ont` parameter to generate sorted BAM files suitable for signal-level analysis.
 3. **Event Alignment**  
-   Using **Nanopolish (v0.13.2)**, raw signal data were aligned to the reference genome at the event level through the `eventalign` module with the `--scale-events` option, linking current signals with specific genomic positions.
+   Using **Nanopolish (v0.13.2)**, raw signal data were aligned to the reference genome at the event level through the `eventalign` module.
 4. **Methylation Calling**  
    CpG methylation sites were identified using **Nanopolish (v0.13.2)** with the `call-methylation` module, applying parameters such as `--threads`, `--reads`, `--bam`, and `--genome` to generate per-read methylation calls (`methylation_calls.tsv`).
 5. **Methylation Frequency Calculation**  
