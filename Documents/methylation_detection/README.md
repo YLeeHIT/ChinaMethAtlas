@@ -76,7 +76,7 @@ These workflows support both CPU and GPU environments and are compatible with **
 
 This workflow performs end-to-end methylation analysis, including basecalling, modified-base detection, and methylation summarization.
 
-<p align="center">
+<p align="left">
     <img src="https://latex.codecogs.com/png.image?Input:POD5/FAST5%20%2B%20Reference%20FASTA" alt="Input: POD5 + Reference FASTA" />
 </p>
 
@@ -98,7 +98,7 @@ nextflow run epi2melabs/wf-methylation -profile docker \
 
 This pipeline identifies SNVs, Indels, and SVs, and optionally performs haplotype phasing.
 
-<p align="center"> 
+<p align="left"> 
     <img src="https://latex.codecogs.com/png.image?Input:FASTQ%20%2B%20Reference%20FASTA" alt="Input: FASTQ + Reference FASTA" /> 
 </p>
 
