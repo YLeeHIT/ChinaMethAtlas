@@ -138,7 +138,7 @@ It provides tools for methylation normalization, classification, compensation ef
 - **Compensation Fold Calculation**: Computes methylation compensation effects in heterozygous DELs and visualizes fold changes across length bins.  
 - **Transposable Element Identification**: Aligns INS consensus sequences to the genome using **minimap2** and annotates mobile element classes (SINE, LINE, LTR) based on **rMETL** consensus data.
 
-Detailed procedures are documented in [**sDMR analysis**](Documents/sDMR_analysis/sDMR_analysis.md).
+Detailed procedures are documented in [**sDMR analysis**](Documents/sDMR_analysis/README.md).
 
 
 ### Haplotype-based Differentially Methylated Regions (hDMR)
@@ -150,7 +150,7 @@ It integrates haplotype-level methylation analysis, region merging, and imprinti
 - **Union and Annotation**: Merges overlapping hDMRs across individuals and defines potential imprinting control regions (ICRs) within gene and promoter regions.  
 - **Imprinting Gene Classification**: Annotates known and candidate imprinting genes by integrating results with the **GENEIMPRINT** database.
 
-Detailed procedures are documented in [**hDMR analysis**](Documents/hDMR_analysis/hDMR_analysis.md).
+Detailed procedures are documented in [**hDMR analysis**](Documents/hDMR_analysis/README.md).
 
 
 ### Population-specific Differentially Methylated Regions (pDMR)
@@ -162,7 +162,7 @@ It integrates DMR detection, gene annotation, and environmental association anal
 - **DMG Identification**: Defines DMGs by mapping DMRs to gene and regulatory regions, visualized using **ComplexHeatmap**.  
 - **Functional Analysis**: Performs **GO/KEGG** enrichment with **Metascape** and **Cytoscape**, and evaluates altitude–methylation associations using logistic regression models.  
 
-Detailed procedures are documented in [**pDMR analysis**](Documents/pDMR_analysis/pDMR_analysis.md).
+Detailed procedures are documented in [**pDMR analysis**](Documents/pDMR_analysis/README.md).
 
 
 ### Genetic Variation Effects on DNA Methylation
@@ -175,8 +175,6 @@ It combines population genomic data with public meQTL resources to assess possib
 - **DMR Screening**: Flags DMRs containing >10% meQTL-associated CpGs and maps affected regions to genes for further analysis.  
 
 Detailed procedures are documented in [**genetic variation effects**](Documents/genetic_variation_effects/README.md).
-
-
 
 ## Website
 
@@ -194,27 +192,6 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 - Implemented scripts for extracting methylation levels around ME insertions
 - Provided demo data and usage examples for the MEG module
 - Updated MEG folder with structured workflow and documentation
-
-### v1.3 Release Notes
-
-- Fixed bug in INS processing pipeline related to methylation extraction
-- Added complete INS module demo (input data, script, expected output)
-- Updated INS folder structure and usage guide
-
-### v1.2 Release Notes
-
-- Fixed bug in DEL processing pipeline related to methylation extraction
-- Added complete DEL module demo (input data, script, expected output)
-- Updated DEL folder structure and usage guide
-
-### v1.1 Release Notes
-
-- Added basic project description
-- Provided core scripts for structural variation and methylation analysis
-- Updated README with usage instructions
-- Organized initial workflow structure, including INS, DEL, and ONT modules
-
-For the stable version, please use the `main` branch 
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
