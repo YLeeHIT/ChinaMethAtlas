@@ -10,9 +10,7 @@ The analysis aims to capture allele-specific methylation differences that may un
 
 - **hDMR Detection**:  
   For each population, **10 individuals** were randomly selected to perform hDMR detection using **Metilene (v0.2.8)** with the same parameters applied in pDMR identification — a minimum number of CpGs ≥ 5, a maximum CpG distance ≤ 1000 bp, and detection mode = 1 (*de-novo*).  
-  The analysis was repeated **five times**, followed by a full-cohort run using all individuals.  
-  We further required **segment length ≥ 100 bp** to improve robustness.  
-  The complete set of hDMRs was defined as regions with mean methylation difference (α) > 0 and q-value < 1, and filtered using the official **Metilene** post-processing script (`metilene.output.pl`) to retain those with **q-value ≤ 0.05**, **α ≥ 0.1**, and **length ≥ 50 bp**. 
+  We used **Metilene** to retain regions with **length ≥ 100 bp**, **methylation difference ≥ 0.1**, **CpG count ≥ 5**, and **q-value < 0.05**.
 
 - **Background Distribution**:  
   The genome was partitioned into **800 bp intervals** (corresponding to the average length of hDMRs, 784 bp).  
@@ -22,10 +20,6 @@ The analysis aims to capture allele-specific methylation differences that may un
   A union set of hDMRs across all individuals was created by merging overlapping regions based on their maximum genomic span.  
   Regions overlapping with gene bodies or their **2 kb upstream** promoter sequences were defined as potential **imprinting control regions (ICRs)**.  
   For each merged ICR, Δ<sub>hDMR</sub> was defined as the arithmetic mean of absolute methylation differences between haplotypes across all constituent hDMRs:
-
-<p align="center">
-  Δ<sub>hDMR</sub> = mean(|Meth<sub>hap1</sub> − Meth<sub>hap2</sub>|)
-</p>
 
 <p align="center">
   <img src="https://latex.codecogs.com/svg.image?\Delta_{hDMR}=\mathrm{mean}\big(|\mathrm{Meth}_{hap1}-\mathrm{Meth}_{hap2}|\big)" title="Δ_hDMR = mean(|Meth_hap1 − Meth_hap2|)" />
@@ -48,9 +42,9 @@ The analysis aims to capture allele-specific methylation differences that may un
 
 | File | Description | Source |
 |------|-------------|--------|
-| `1448_nochrXY.bed` | Candidate imprinting control regions (ICRs) identified from whole-genome bisulfite sequencing (WGBS) across brain, liver, and kidney. | [*Epigenetics* (Jima *et al.*, 2022)](https://doi.org/10.1080/15592294.2022.2069367) |
-| `1225_nochrXY.bed` | Independently re-sequenced candidate ICRs derived from the same WGBS cohort. | [*Epigenetics* (Jima *et al.*, 2022)](https://doi.org/10.1080/15592294.2022.2069367) |
-| `golden_hg38.bed` | Repeatedly validated ICRs used as a gold-standard reference for comparison and validation. | [*Epigenetics* (Skaar *et al.*, 2012)](https://doi.org/10.4161/epi.21094) |
+| `1448_nochrXY.bed` | Candidate imprinting control regions (ICRs) identified from whole-genome bisulfite sequencing (WGBS) across brain, liver, and kidney. | [*Epigenetics* (Jima *et al.*, 2022)](https://pubmed.ncbi.nlm.nih.gov/35786392/) |
+| `1225_nochrXY.bed` | Independently re-sequenced candidate ICRs derived from the same WGBS cohort. | [*Epigenetics* (Jima *et al.*, 2022)](https://pubmed.ncbi.nlm.nih.gov/35786392/) |
+| `golden_hg38.bed` | Repeatedly validated ICRs used as a gold-standard reference for comparison and validation. | [*Epigenetics* (Skaar *et al.*, 2012)](https://pubmed.ncbi.nlm.nih.gov/23744971/) |
 | `our_ICRs.bed` | Candidate ICRs identified from merged hDMRs in this study, available via the ChinaMeth platform. | [ChinaMeth](http://bioinformatics.hit.edu.cn/chinaMeth/#/) |
 | `imprint_database.id` | Curated imprinted genes compiled from multiple studies for annotation and validation of hDMRs. | [GENEIMPRINT Database](https://www.geneimprint.com/) |
 
