@@ -138,7 +138,7 @@ It provides tools for methylation normalization, classification, compensation ef
 - **Compensation Fold Calculation**: Computes methylation compensation effects in heterozygous DELs and visualizes fold changes across length bins.  
 - **Transposable Element Identification**: Aligns INS consensus sequences to the genome using **minimap2** and annotates mobile element classes (SINE, LINE, LTR) based on **rMETL** consensus data.
 
-Detailed procedures are documented in [**sDMR analysis**](Documents/sDMR/sDMR_analysis.md).
+Detailed procedures are documented in [**sDMR analysis**](Documents/sDMR_analysis/sDMR_analysis.md).
 
 
 ### Haplotype-based Differentially Methylated Regions (hDMR)
@@ -150,7 +150,7 @@ It integrates haplotype-level methylation analysis, region merging, and imprinti
 - **Union and Annotation**: Merges overlapping hDMRs across individuals and defines potential imprinting control regions (ICRs) within gene and promoter regions.  
 - **Imprinting Gene Classification**: Annotates known and candidate imprinting genes by integrating results with the **GENEIMPRINT** database.
 
-Detailed procedures are documented in [**hDMR analysis**](Documents/hDMR/hDMR_analysis.md).
+Detailed procedures are documented in [**hDMR analysis**](Documents/hDMR_analysis/hDMR_analysis.md).
 
 
 ### Population-specific Differentially Methylated Regions (pDMR)
@@ -162,7 +162,7 @@ It integrates DMR detection, gene annotation, and environmental association anal
 - **DMG Identification**: Defines DMGs by mapping DMRs to gene and regulatory regions, visualized using **ComplexHeatmap**.  
 - **Functional Analysis**: Performs **GO/KEGG** enrichment with **Metascape** and **Cytoscape**, and evaluates altitude–methylation associations using logistic regression models.  
 
-Detailed procedures are documented in [**pDMR analysis**](Documents/pDMR/pDMR_analysis.md).
+Detailed procedures are documented in [**pDMR analysis**](Documents/pDMR_analysis/pDMR_analysis.md).
 
 
 ### Genetic Variation Effects on DNA Methylation

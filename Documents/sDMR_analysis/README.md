@@ -10,7 +10,6 @@ This module provides the complete workflow for identifying and analyzing **segme
 
 #### 1. Segmental Differential Methylated Region Detection
 
-The full analysis process for SV-related methylation is illustrated in *Figure S40*.  
 All SVs were merged using **Jasmine (v1.1.5)** with a minimum support threshold of 5. Filtering was performed separately for each population, applying a Hardy–Weinberg equilibrium p-value ≥ 1e−6 and a maximum missing rate ≤ 0.5.
 
 For each variant, three methylation values were computed:
@@ -92,7 +91,7 @@ where:
 
 Five representative samples per population were used, focusing on sDMRs ranging **250–6,500 bp** in length.  
 Significant compensation was defined by |A−C| > |B−C| and |B−C| > 0.01.  
-Fold changes were summarized across three length bins: 250–500 bp, 500–2,000 bp, and 2,000–6,500 bp (*see Fig. S41*).
+Fold changes were summarized across three length bins: 250–500 bp, 500–2,000 bp, and 2,000–6,500 bp.
 
 ---
 

@@ -87,7 +87,7 @@ For multiple groups, the **Kruskal–Wallis test** was applied to evaluate diffe
 | Script Name | Purpose / Function | Notes |
 |--------------|-------------------|-------|
 | `fastq_stat.sh` | Calculate FASTQ read N50 and error rate. | BAM files should be converted to FASTQ |
-| `cpg_anno.sh` | Annotate CpG sites across different functional genomic elements. | Annotation reference files can be found in the [`anno_data`](../../anno_data) directory. |
+| `cpg_anno.sh` | Annotate CpG sites across different functional genomic elements. | Annotation reference files can be found in the [`anno_data`](anno_data) directory. |
 | `PCA_Anosim.R` | Perform Principal Component Analysis (PCA) and ANOSIM to assess group separation. | Prepare the input matrix by merging per-sample files with `bedtools unionbedg`. |
 
 ---
