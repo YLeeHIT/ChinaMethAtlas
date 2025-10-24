@@ -34,8 +34,9 @@ Statistical evaluations of methylation differences between populations employed 
 A **logistic regression model** was used to fit methylation–altitude relationships:
 
 <p align="center">
-  y = y<sub>min</sub> + (y<sub>max</sub> − y<sub>min</sub>) / (1 + e<sup>−k(x − m₀)</sup>)
+  <img src="https://latex.codecogs.com/svg.image?y=y_{min}+\frac{(y_{max}-y_{min})}{1+e^{-k(x-m_{0})}}" title="y = y_min + (y_max − y_min) / (1 + e^{−k(x − m₀)})" />
 </p>
+
 
 where *m₀* represents the methylation inflection point, and *k* reflects the rate of methylation change with altitude.  
 Model fitting significance was assessed using the **F-statistic p-value**, and R² values were used to evaluate fit performance.
