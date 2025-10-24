@@ -20,8 +20,8 @@ Detected pDMRs were categorized as **hyper** (mean methylation difference > 0) o
 
 ### 2. Differentially Methylated Gene (DMG) Identification
 
-Differentially methylated genes were defined by integrating pDMRs and differential methylated CpG sites overlapping **gene bodies** or **±2 kb regulatory regions**.  
-Genes were retained if DMRs contained ≥ 20 CpGs and covered more than 50% of the gene region.  
+Differentially methylated genes (DMGs) were defined by integrating pDMRs and differentially methylated CpG sites overlapping gene bodies or ±2 kb regulatory regions.
+Genes were retained if the associated DMRs contained ≥ 20 CpGs and overlapped more than 50% of the gene body, while CpG-level associations were further restricted to regions with > 40 CpGs and methylation difference ≥ 0.15.
 Population-level comparisons were performed to identify genes showing distinct methylation profiles among high- and low-altitude groups.  
 Clustering and visualization were implemented using the **ComplexHeatmap (v2.16.0)** package in R.
 
@@ -61,4 +61,3 @@ Finally, differences in methylation profiles for representative genes were visua
 
 > **Note:**
 > Ensure consistent reference genome (GRCh38) and coordinate alignment across datasets before execution.  
-> Recommended to maintain balanced sample sizes for each population when performing subsampling analyses.
