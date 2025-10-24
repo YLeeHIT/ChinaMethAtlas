@@ -40,7 +40,7 @@ Shared CpG sites across individuals were merged using **Bedtools (v2.29)** with 
 CpGs exhibiting low population differentiation (≤ 0.05) were removed, where differentiation was defined as:
 
 <p align="center">
-    <img src="https://latex.codecogs.com/svg.image?diff(pop_1,pop_2)=\left|\frac{\sum\beta_1}{n}-\frac{\sum\beta_2}{m}\right|" title="diff(pop_1,pop_2)=|Σβ₁/n−Σβ₂/m|" />
+  <img src="https://latex.codecogs.com/svg.image?diff(pop_1,pop_2)=\left|\frac{\sum\beta_1}{n}-\frac{\sum\beta_2}{m}\right|" title="diff(pop_1,pop_2)=|Σβ₁/n−Σβ₂/m|" />
 </p>
 
 Here, **n** and **m** denote the number of samples in populations 1 and 2, and **β** represents the methylation level of a CpG site.  
@@ -56,6 +56,10 @@ The overall methylation level (ML) of a functional element was calculated as:
 <p align="center">
     ML(i,j) = Σβ / ΣN<sub>CpG</sub>
 </p>
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.image?ML(i,j)=\frac{\sum\beta}{\sum N_{CpG}}" title="ML(i,j) = Σβ / ΣN_CpG" />
+</p>
+
 
 where **N<sub>CpG</sub>** is the number of CpGs within the region, and **β** represents the methylation level.
 Methylation density (MD) was computed as:
@@ -63,6 +67,11 @@ Methylation density (MD) was computed as:
 <p align="center">
     MD(i,j) = ΣN<sub>CpG</sub> / (j − i)
 </p>
+
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.image?MD(i,j)=\frac{\sum N_{CpG}}{(j-i)}" title="MD(i,j) = ΣN_CpG / (j−i)" />
+</p>
+
 
 Annotation files were downloaded from [UCSC Genome Browser](http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database).  
 For features available only in GRCh37, **liftOver** was used to convert coordinates to GRCh38.
@@ -84,12 +93,13 @@ For multiple groups, the **Kruskal–Wallis test** was applied to evaluate diffe
 
 | Script Name | Purpose / Function | Notes |
 |--------------|-------------------|-------|
-| `cpg_merge.sh` | Merges CpG sites across individuals using Bedtools `unionbedg`. | Input: methylation files from multiple samples. |
-| `pca_analysis.R` | Performs PCA and visualizes principal components using PCAtools. | Output: PCA plots and variance explained by components. |
-| `anosim_test.R` | Conducts ANOSIM clustering validation using Vegan with Bray–Curtis distance. | Evaluates population-level methylation similarity. |
-| `filter_lowdiff_cpg.py` | Filters CpG sites with low differentiation (≤ 0.05) between populations. | Ensures CpGs with stable methylation are excluded. |
+| `fastq_stat.sh` | Merges CpG sites across individuals using Bedtools `unionbedg`. | Input: methylation files from multiple samples. |
+| `cpg_anno.sh` | Performs PCA and visualizes principal components using PCAtools. | Output: PCA plots and variance explained by components. |
+| `PCA_Anosim.R` | Conducts ANOSIM clustering validation using Vegan with Bray–Curtis distance. | Evaluates population-level methylation similarity. |
 
 ---
 
 #### Notes
 - Users should modify input file paths and reference genome versions according to their datasets before running the analysis.
+- All scripts are located in [**`cpg_snv_sv`**](../../scripts/cpg_snv_sv).  
+- Annotation reference files are stored under [**`anno_data`**](anno_data).  
