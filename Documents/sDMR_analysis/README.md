@@ -22,9 +22,6 @@ Regions containing at least **5 CpGs** were retained, and the average methylatio
 To normalize segmental methylation, we used:
 
 <p align="center">
-    Meth<sub>nor</sub> = (Meth<sub>seg</sub> − Meth<sub>min</sub>) / (Meth<sub>max</sub> − Meth<sub>min</sub>)
-</p>
-<p align="center">
   <img src="https://latex.codecogs.com/svg.image?Meth_{nor}=\frac{Meth_{seg}-Meth_{min}}{Meth_{max}-Meth_{min}}" title="Meth_nor = (Meth_seg − Meth_min) / (Meth_max − Meth_min)" />
 </p>
 
@@ -85,9 +82,6 @@ The INS analysis pipeline includes the following scripts:
 To evaluate **compensatory methylation effects** in heterozygous deletions, we calculated the compensatory fold as:
 
 <p align="center">
-    Fold = |A − C| / (|B − C| + ϵ)
-</p>
-<p align="center">
   <img src="https://latex.codecogs.com/svg.image?Fold=\frac{|A-C|}{(|B-C|+\varepsilon)}" title="Fold = |A − C| / (|B − C| + ε)" />
 </p>
 
@@ -130,7 +124,6 @@ INS elements were aligned to **ALU**, **L1**, and **SVA** reference sequences (q
 
 > **Note:**  
 > Before running, ensure that all input file paths, reference genomes, and population labels are correctly configured in the corresponding scripts.
-
-
-
+> The MEI reference genome can be referenced using super_TE.fa. 
+> A complete and executable analysis pipeline can be implemented with [**methSV**](https://github.com/YLeeHIT/methSV)
 
