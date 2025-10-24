@@ -57,7 +57,7 @@ The overall methylation level (ML) of a functional element was calculated as:
     ML(i,j) = Σβ / ΣN<sub>CpG</sub>
 </p>
 <p align="center">
-  <img src="https://latex.codecogs.com/svg.image?ML(i,j)=\frac{\sum\beta}{\sum N_{CpG}}" title="ML(i,j) = Σβ / ΣN_CpG" />
+  <img src="https://latex.codecogs.com/png.latex?ML(i,j)=\frac{\sum%20\beta}{\sum%20N_{CpG}}" title="ML(i,j) = Σβ / ΣN_CpG" />
 </p>
 
 
@@ -67,9 +67,8 @@ Methylation density (MD) was computed as:
 <p align="center">
     MD(i,j) = ΣN<sub>CpG</sub> / (j − i)
 </p>
-
 <p align="center">
-  <img src="https://latex.codecogs.com/svg.image?MD(i,j)=\frac{\sum N_{CpG}}{(j-i)}" title="MD(i,j) = ΣN_CpG / (j−i)" />
+  <img src="https://latex.codecogs.com/png.latex?MD(i,j)=\frac{\sum%20N_{CpG}}{(j-i)}}" title="MD(i,j) = ΣN_CpG / (j−i)" />
 </p>
 
 
@@ -93,9 +92,9 @@ For multiple groups, the **Kruskal–Wallis test** was applied to evaluate diffe
 
 | Script Name | Purpose / Function | Notes |
 |--------------|-------------------|-------|
-| `fastq_stat.sh` | Merges CpG sites across individuals using Bedtools `unionbedg`. | Input: methylation files from multiple samples. |
-| `cpg_anno.sh` | Performs PCA and visualizes principal components using PCAtools. | Output: PCA plots and variance explained by components. |
-| `PCA_Anosim.R` | Conducts ANOSIM clustering validation using Vegan with Bray–Curtis distance. | Evaluates population-level methylation similarity. |
+| `fastq_stat.sh` | Calculate FASTQ read N50 and error rate. | BAM files should be converted to FASTQ |
+| `cpg_anno.sh` | Annotate CpG sites across different functional genomic elements. | Annotation reference files can be found in the [`anno_data`](../../anno_data) directory. |
+| `PCA_Anosim.R` | Perform Principal Component Analysis (PCA) and ANOSIM to assess group separation. | Prepare the input matrix by merging per-sample files with `bedtools unionbedg`. |
 
 ---
 
