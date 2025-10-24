@@ -54,9 +54,6 @@ CpG methylation levels were annotated to genomic and regulatory features to inve
 The overall methylation level (ML) of a functional element was calculated as:
 
 <p align="center">
-    ML(i,j) = Σβ / ΣN<sub>CpG</sub>
-</p>
-<p align="center">
   <img src="https://latex.codecogs.com/png.latex?ML(i,j)=\frac{\sum%20\beta}{\sum%20N_{CpG}}" title="ML(i,j) = Σβ / ΣN_CpG" />
 </p>
 
@@ -67,6 +64,7 @@ Methylation density (MD) was computed as:
 <p align="center">
     MD(i,j) = ΣN<sub>CpG</sub> / (j − i)
 </p>
+
 <p align="center">
   <img src="https://latex.codecogs.com/png.latex?MD(i,j)=\frac{\sum%20N_{CpG}}{(j-i)}}" title="MD(i,j) = ΣN_CpG / (j−i)" />
 </p>
