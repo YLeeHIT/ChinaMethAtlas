@@ -72,10 +72,11 @@ The DEL analysis pipeline includes the following scripts:
 
 The INS analysis pipeline includes the following scripts:
 
-1. **extractReadFromINS.py**: Extracts methylation signals and sequences around INS (Insertion) variants. 
-2. **compareSide2kbINS.sh**: Compares methylation levels between INS regions and their upstream/downstream 2kb regions. 
-3. **ins_pop_merge.sh**: Merges individual methylation data files into a population-level file. 
-4. **INS_plot.R**: Generates scatter and density plots for INS methylation levels.
+1. **buildBam.sh**: Extract reads from a BAM at variant coordinates. 
+2. **extractReadFromINS.py**: Extracts methylation signals and sequences around INS (Insertion) variants. 
+3. **compareSide2kbINS.sh**: Compares methylation levels between INS regions and their upstream/downstream 2kb regions. 
+4. **ins_pop_merge.sh**: Merges individual methylation data files into a population-level file. 
+5. **INS_plot.R**: Generates scatter and density plots for INS methylation levels.
 
 ---
 
