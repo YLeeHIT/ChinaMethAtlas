@@ -66,7 +66,11 @@ Methylation density (MD) was computed as:
 </p>
 
 <p align="center">
-  <img src="https://latex.codecogs.com/png.latex?MD(i,j)=\frac{\sum%20N_{CpG}}{(j-i)}}" title="MD(i,j) = ΣN_CpG / (j−i)" />
+  <img src="https://latex.codecogs.com/png.latex?MD(i,j)=\frac{\sum%20N_{CpG}}{j-i}}" title="MD(i,j) = ΣN_CpG / (j−i)" />
+</p>
+
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.image?MD(i,j)=\frac{\sum%20N_{\mathrm{CpG}}}{(j-i)}" title="MD(i,j) = ΣN_CpG / (j−i)" />
 </p>
 
 
