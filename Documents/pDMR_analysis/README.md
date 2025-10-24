@@ -1,7 +1,11 @@
+<div align="center">
+  <img src="../../images/pDMR_samples.png" alt="pDMR samples" width="600"/>
+</div>
+
 ### Population-specific Differentially Methylated Region (pDMR) Analysis
 
-This module focuses on the identification and interpretation of **population-specific differentially methylated regions (pDMRs)** and their associated **differentially methylated genes (DMGs)** across the North, South, and Xizang populations.  
-It provides a framework for inter-population comparison, gene-level annotation, and altitude-associated methylation modeling.
+We identified and interpreted **population-specific differentially methylated regions (pDMRs)** and their associated **differentially methylated genes (DMGs)** among the North, South, and Xizang populations. This analysis enabled inter-population methylation comparison, gene-level functional annotation, and modeling of altitude-associated methylation patterns. 
+Detailed sample distribution and population grouping are shown in the figure above.
 
 ---
 
@@ -53,18 +57,6 @@ For identifying **novel high-altitude adaptation (HA) genes**, we applied a mult
 Finally, differences in methylation profiles for representative genes were visualized using the **NanoMethViz (v2.6.0)** R package (`plot_gene` function).
 
 ---
-
-
-#### Summary of Scripts
-
-| Script Name | Function | Description |
-|--------------|-----------|-------------|
-| `prepare_input.sh` | Generate input files | Merges population BED files for Metilene input |
-| `pDMR_metilene.sh` | Detect population-specific DMRs | Runs Metilene to identify DMRs between population pairs |
-| `filter_pDMR.sh` | Filter significant DMRs | Applies thresholds for q-value, α, and minimum DMR length |
-| `DMG_annotation.py` | Identify DMGs | Maps filtered pDMRs to gene regions |
-| `altitude_model.R` | Fit logistic models | Evaluates altitude–methylation associations |
-| `pDMR_visualization.R` | Plot results | Generates circos and heatmap visualizations |
 
 > **Note:**
 > Ensure consistent reference genome (GRCh38) and coordinate alignment across datasets before execution.  

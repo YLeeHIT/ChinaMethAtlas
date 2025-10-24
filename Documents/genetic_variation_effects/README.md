@@ -36,15 +36,6 @@ Filtered DMRs were then annotated with gene symbols for downstream comparison an
 
 ---
 
-#### Summary of Scripts
-
-| Script Name | Function | Description |
-|--------------|-----------|-------------|
-| `extract_SNV.sh` | Filter SNVs | Selects variants by MAF, HWE, and allele frequency difference |
-| `annotate_meQTL.py` | meQTL mapping | Integrates GoDMC data and annotates CpG–SNV associations |
-| `filter_DMR_by_meQTL.py` | DMR screening | Flags DMRs with >10% meQTL-associated CpGs |
-| `genetic_effect_summary.R` | Visualization | Summarizes overlap and generates comparative plots |
-
 > **Note:**  
 > Ensure consistent reference versions (hg19/hg38) before annotation.  
 > This analysis provides a framework for evaluating potential **genetic confounding** in methylation-based population studies.
