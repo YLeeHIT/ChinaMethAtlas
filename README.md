@@ -176,6 +176,8 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 
 ## Release
 
+Please use the latest version **v1.5** for optimal performance and updated features.
+
 ### v1.5 Release Notes
 - Added detailed documentation describing the complete analysis workflow
 - Supplemented scripts and data for sDMR, pDMR, and hDMR analyses
@@ -191,7 +193,7 @@ Explore CpG and three types of DMR distributions, including sDMR, hDMR, and pDMR
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Citation
-If you use ChinaMethAtlas in your research, please cite the following paper: **A comprehensive DNA methylation atlas for the Chinese population through nanopore long-read sequencing of 106 individuals**
+If you use ChinaMethAtlas in your research, please cite the following paper: **A comprehensive DNA methylation atlas for the Chinese population through nanopore long-read sequencing of 106 individuals** (manuscript in review)
 
 ## Contact
-For any questions, please contact [email](yli21b@hit.edu.cn)
+196 If you use ChinaMethAtlas in your research, please cite the following paper: **A comprehensive DNA methylation atlas for the Chinese population through nFor any questions, please contact [email](yli21b@hit.edu.cn)
