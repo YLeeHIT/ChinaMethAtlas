@@ -1,0 +1,52 @@
+INFORMATION RELATING TO assoc_meta_all.csv.gz
+
+BACKGROUND METHODS
+
+GoDMC was established with the view of bringing together researchers with an interest in studying the genetic basis of DNA methylation variation, to consolidate as many resources and expertise as possible and thereby expedite this field of research. The initial release of their findings consists of mQTL associations based on a sample size of 27,750 individuals.
+ 
+Genotype data: Genotype data of all autosomes and chromosome X (if available) was imputed to 1000G and above using hg19/build37. Genotype data was filtered on an info score of 0.8 and a minor allele frequency (MAF) of 0.01. Genotype data was converted to bestguess data without a probability cut-off. 
+
+DNA methylation data: DNA methylation was measured in whole blood or cord blood using Illumina 450k or EPIC Beadchips in at least 100 European individuals. Normalized beta values were used, preferable normalized with the R package meffil. Most analysts used meffil to quality control and normalize the DNA methylation data using functional normalization. Protocols can be found here: https://github.com/perishky/meffil/wiki. 
+
+A github pipeline was implemented to run the analyses locally (https://github.com/mrcieu/godmc). For the genotype data, several standard sample QC steps were performed including a sex check, removal of samples with >5% missingness, and the identification and exclusion of ethnic outliers. In datasets of ostensibly unrelated individuals, those that were found to be related (identity by state > 0.125) were excluded. 
+
+The pipeline then residualised the normalized methylation betas by replacing outliers that were 10 standard deviations from the mean (3 iterations) with the probe mean, rank transforming the normalized beta values and regressing out age, sex, predicted cell counts, predicted smoking, genetic principal components and non-genetic methylation principal components. In family-based cohorts, genetic relatedness matrices were constructed and relatedness adjusted for using the GRAMMAR approach. Genomic lambdas were checked by performing a GWAS of cg07959070. These residualised methylation measurements were used in all analyses.
+
+Association analysis: First, every study performed a full analysis of all candidate mQTL associations, returning only associations at a threshold of p<1e-5. All candidate mQTL associations at p<1e-5 were combined to create an unique ‘candidate list’ of mQTL associations. In total, 102,965,711 candidate mQTL associations in cis (p<1e-5, SNP located within 1Mb of the methylation site) and 710,638,230 candidate mQTL associations in trans were identified in at least one dataset. To avoid computational burden, we included cis associations found in at least one dataset and trans associations in at least two datasets. The candidate list (n=120,212,413) was then sent back to all cohorts and the association estimates obtained for every mQTL association on the candidate list. 
+
+Meta analyses: The estimates for the candidate list are meta-analysed to obtain the final results. Meta analyses have been run using a modified version of METAL (https://github.com/explodecomputer/random-metal) using 962 chunks. We have meta-analysed our candidate mQTL associations using fixed effects (which has been used for all our analyses), additive random effects and multiplicative random effects models. We used rank transformation and therefore the units are in “SD change in DNA methylation per allele”. We included 36 datasets from European origin in our meta-analyses. 
+
+In our analysis we considered a cis pvalue smaller than 1e-8 and a trans pvalue smaller than 1e-14 as significant.
+
+Column names for assoc_meta_all.csv.gz
+
+cpg=450k cpg
+snp={CHR}:{POS}:{SNP/INDEL} (positions are on build 37, A,C,T,G alleles are coded as SNPs)
+beta_a1: Regression coefficient of allele 1 from fixed effects meta analysis
+se: Standard error fixed effects meta analysis
+pval: Pvalue fixed effects meta analysis
+samplesize: Samplesize used in fixed effects meta analysis
+allele1: Effect allele
+allele2: Non effect allele
+freq_a1: Effect allele frequency
+freq_se: Standard error allele frequency
+cistrans: cis=TRUE, Cis: Distance between SNP-CpG <1 MB
+num_studies: Number of studies used in fixed effects meta analysis
+direction: Direction for each of 36 cohorts
+hetisq: I2 
+hetchisq: Heterogeneity Chi square
+hetdf: Degrees of freedom
+hetpval: Heterogeneity pvalue 
+tausq: Tau square
+beta_are_a1: Regression coefficient of allele 1 from additive random effects meta analysis
+se_are: Standard error additive random effects meta analysis
+pval_are: Pvalue random effects meta analysis
+se_mre: Standard error multiplicative random effects meta analysis; Effect sizes MRE are the same as in beta_a1 column
+pval_mre: Pvalue multiplicative random effects meta analysis
+chunk: meta analysis chunks
+clumped: TRUE means index SNV
+
+
+The snps.csv.gz file contains information on all the variants used for the overall analysis. Only a subset of variants were selected in phase 1 to be taken forward to the overall meta analysis in phase 2, which is indicated by the snp_tested column.
+
+

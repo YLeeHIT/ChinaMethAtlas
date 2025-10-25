@@ -9,7 +9,7 @@ It combines high-coverage Chinese population genomic data with public meQTL reso
 
 ---
 
-### 1. SNV Selection and Filtering
+#### SNV Selection and Filtering
 
 Single nucleotide variants (SNVs) were derived from the **China 100K Genome Project** (25,169 individuals; average 30× NGS coverage).  
 Variants were filtered based on **minor allele frequency (MAF > 0.05)** and **Hardy–Weinberg equilibrium (p > 1×10⁻⁶)**.  
@@ -17,7 +17,7 @@ For population-level analyses, SNVs showing **allele frequency differences > 0.1
 
 ---
 
-### 2. meQTL Annotation and Classification
+#### meQTL Annotation and Classification
 
 Filtered SNVs were annotated using the **GoDMC meQTL database** ([Nature Genetics, 2021](https://doi.org/10.1038/s41588-021-00923-x)) to identify potential CpG–SNV associations within DMRs.  
 At each locus, alleles were classified as:
@@ -28,7 +28,7 @@ To ensure compatibility with public datasets, all coordinates were converted fro
 
 ---
 
-### 3. DMR Filtering and Gene Mapping
+#### DMR Filtering and Gene Mapping
 
 DMRs containing **>10% of CpGs** associated with meQTL-linked SNVs were flagged as potentially influenced by genetic variation.  
 For **hDMRs**, gene-level annotations were restricted to regions supported by at least **two individuals per population**.  
@@ -38,4 +38,4 @@ Filtered DMRs were then annotated with gene symbols for downstream comparison an
 
 > **Note:**  
 > Ensure consistent reference versions (hg19/hg38) before annotation.  
-> This analysis provides a framework for evaluating potential **genetic confounding** in methylation-based population studies.
+> For detailed script information, see [**meQTL**](../../scripts/meQTL).
