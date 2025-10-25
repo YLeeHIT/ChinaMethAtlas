@@ -8,7 +8,7 @@ This module provides the complete workflow for identifying and analyzing **segme
 
 ---
 
-#### 1. Segmental Differential Methylated Region Detection
+#### Segmental Differential Methylated Region Detection
 
 All SVs were merged using **Jasmine (v1.1.5)** with a minimum support threshold of 5. Filtering was performed separately for each population, applying a Hardy–Weinberg equilibrium p-value ≥ 1e−6 and a maximum missing rate ≤ 0.5.
 
@@ -36,7 +36,7 @@ The methylation difference of each sDMR relative to its ±2 kb flanking regions 
 
 ---
 
-#### 2. SV-Associated Methylation Level Analysis
+#### SV-Associated Methylation Level Analysis
 
 The genome was divided into equal-length intervals with variable step sizes:
 - **10 bp** for segments < 100 bp  
@@ -77,14 +77,13 @@ The INS analysis pipeline includes the following scripts:
 
 ---
 
-#### 3. Calculation of the Compensatory Fold
+#### Calculation of the Compensatory Fold
 
 To evaluate **compensatory methylation effects** in heterozygous deletions, we calculated the compensatory fold as:
 
 <p align="center">
   <img src="https://latex.codecogs.com/svg.image?Fold=\frac{|A-C|}{(|B-C|+\varepsilon)}" title="Fold = |A − C| / (|B − C| + ε)" />
 </p>
-
 
 
 where:
@@ -99,7 +98,7 @@ Fold changes were summarized across three length bins: 250–500 bp, 500–2,000
 
 ---
 
-#### 4. Identification of Transposable Elements
+#### Identification of Transposable Elements
 
 INS consensus sequences were aligned to the reference genome using **minimap2 (v2.26)** in `map-ont` mode, and the **primary alignment** (mapping quality ≥ 20) was selected.  
 If the alignment occurred on a different chromosome or >10 kb away from the insertion site, it was designated as the **source locus**.  
@@ -111,7 +110,7 @@ INS and DEL variants with a **population frequency > 50%** in any group were ret
 
 INS elements were aligned to **ALU**, **L1**, and **SVA** reference sequences (quality ≥ 20) using consensus data from **rMETL (v1.0.4)**, and annotated with respect to **SINE**, **LINE**, and **LTR** categories.
 
-### ME workflow
+#### ME workflow
 <div align="center">
     <img src="../../images/INS_reAlign.png" alt="INS reAlign" width="500"/>
 </div>

@@ -92,7 +92,7 @@ For multiple groups, the **Kruskal–Wallis test** was applied to evaluate diffe
 
 ---
 
-#### Notes
-- Users should modify input file paths and reference genome versions according to their datasets before running the analysis.
-- All scripts are located in [**`cpg_snv_sv`**](../../scripts/cpg_snv_sv).  
-- Annotation reference files are stored under [**`anno_data`**](anno_data).  
+> **Notes:**
+> Users should modify input file paths and reference genome versions according to their datasets before running the analysis.
+> All scripts are located in [**`cpg_snv_sv`**](../../scripts/cpg_snv_sv).  
+> Annotation reference files are stored under [**`anno_data`**](anno_data).  
