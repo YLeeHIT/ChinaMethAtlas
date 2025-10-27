@@ -196,4 +196,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 If you use ChinaMethAtlas in your research, please cite the following paper: **A comprehensive DNA methylation atlas for the Chinese population through nanopore long-read sequencing of 106 individuals** (manuscript in review)
 
 ## Contact
-196 If you use ChinaMethAtlas in your research, please cite the following paper: **A comprehensive DNA methylation atlas for the Chinese population through nFor any questions, please contact [email](yli21b@hit.edu.cn)
+If you use ChinaMethAtlas in your research, please cite the following paper: **A comprehensive DNA methylation atlas for the Chinese population through nFor any questions, please contact [email](yli21b@hit.edu.cn)
